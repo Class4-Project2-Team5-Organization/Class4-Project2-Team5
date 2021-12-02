@@ -1,0 +1,26 @@
+
+'로그인/회원가입'을 구동하기 위해서 해야할 것.
+
+1. 계정 정보가 들어갈 데이터베이스를 만들어야 합니다.
+
+// 데이터베이스 생성 : orthodox_logreg
+확인 - show databases;
+사용 - use databases;
+
+
+// 테이블 생성
+CREATE TABLE users (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  email varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  password varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY email (email)
+ ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ 확인 - show tables;
+ 내용확인 - select * from 테이블명(users)
+
+ 2. 데이터베이스 생성후 /utils/dbConnection.js에서 본인 데이터베이스 접근 정보를 입력해줘야 함(기존에 입력되있는 것은 작성자 jhin93의 정보).
+
+ 3. 터미널의 루트 디렉토리(/orthodox_LogReg)에서 node index.js 를 입력하여 구동.
