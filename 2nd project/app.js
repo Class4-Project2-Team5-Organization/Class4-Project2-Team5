@@ -14,5 +14,3 @@ app.get('/', (req, res) => {
 app.listen(port, host, ()=>{
     console.log(`Index appliction running at http://${host}:${port}/`);
 });
-
-//test upload
