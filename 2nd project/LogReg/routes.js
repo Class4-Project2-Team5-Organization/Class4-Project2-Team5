@@ -11,7 +11,8 @@ const {
 
 const ifNotLoggedin = (req, res, next) => {
     if(!req.session.userID){
-        return res.redirect('/login');
+        return res.render("main") // 로그인이 안되어있을 시 main으로 이동.
+        // return res.redirect('/login');
     }
     next();
 }
