@@ -18,8 +18,21 @@ CREATE TABLE users (
   UNIQUE KEY email (email)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
- 확인 - show tables;
- 내용확인 - select * from 테이블명(users)
+ // logreg와 review 테이블 병합
+CREATE TABLE testmerge (
+id int(10) unsigned NOT NULL AUTO_INCREMENT,
+name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+email varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+password varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+title varchar(1024) NULL,
+message varchar(2048) NULL,
+PRIMARY KEY (id),
+UNIQUE KEY email (email)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+
+
+확인 - show tables;
+내용확인 - select * from 테이블명(users)
 
  2. 데이터베이스 생성후 /utils/dbConnection.js에서 본인 데이터베이스 접근 정보를 입력해줘야 함(기존에 입력되있는 것은 작성자 jhin93의 정보).
 
