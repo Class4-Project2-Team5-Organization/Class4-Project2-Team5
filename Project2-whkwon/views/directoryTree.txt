@@ -1,0 +1,19 @@
+include headerMypage
+
+body - 1) sidebar(고정) + 2) contents(가변)
+ (필수)
+ - myPage(기본 profile)
+ - infoModify(내 정보 수정)
+ - qna(Q&A)
+ - qnaList(Q&A List)
+
+ - myPage/infoModify => Primary Key
+ - qna/qnaList => Foreign Key
+
+ (선택)
+ - authentification(내 정보 수정 전 재인증)
+ - myBasket(장바구니)
+ - myOrder(주문정보)
+ - myEvents(이벤트 참여)
+
+include footerMypage

@@ -1,0 +1,31 @@
+include headerMypage
+nav 
+  #wrapper.d-flex
+    //- Sidebar
+    #sidebar-wrapper.border-end.bg-white
+      .sidebar-heading.border-bottom.bg-light My Page
+      .list-group.list-group-flush
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='http://localhost:3000/mypage') Profile
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='http://localhost:3000/qna') Q&A
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Event
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status1
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status2
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status3
+    
+    //- Body(Profile modify)
+    #wrapper
+      form(action='/modify', method='POST')
+          div.row
+              div.col-md-6 name:
+              div.col-md-6
+                  input(name='userid')
+          div.row
+              div.col-md-6 email:
+              div.col-md-6
+                  input(name='useremail')
+          div.row
+              div.col-md-6 addr:
+              div.col-md-6
+                  input(name='useraddr')
+          input(type='submit', value='수정')
+include footerMypage
