@@ -28,4 +28,3 @@ CREATE TABLE users (
 
 
 
- 이시ㄴ 테스트
