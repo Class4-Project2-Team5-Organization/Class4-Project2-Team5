@@ -1,0 +1,7 @@
+{
+    "host" : "localhost",
+    "user" : "root",
+    "password" : "wjdwhdcks",
+    "database": "dev",
+    "connectionLimit": 100
+}
