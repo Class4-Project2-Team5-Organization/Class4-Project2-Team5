@@ -24,3 +24,7 @@ CREATE TABLE users (
  2. 데이터베이스 생성후 /utils/dbConnection.js에서 본인 데이터베이스 접근 정보를 입력해줘야 함(기존에 입력되있는 것은 작성자 jhin93의 정보).
 
  3. 터미널의 루트 디렉토리(/orthodox_LogReg)에서 node index.js 를 입력하여 구동.
+
+
+
+
