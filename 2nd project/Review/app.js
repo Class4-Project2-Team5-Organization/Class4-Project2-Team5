@@ -26,8 +26,8 @@ app.set('view engine','ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get('/', (req,res)=>{
-    let sql = "select * from users";
+app.get('/review', (req,res)=>{
+    let sql = "select * from testmerge";
     let query = connection.query(sql,(err,rows)=>{ 
         if(err) throw err;
         res.render("user_index", {
@@ -37,24 +37,24 @@ app.get('/', (req,res)=>{
     });
 });
 
-app.get('/add',(req,res)=>{
+app.get('/review_add',(req,res)=>{
     res.render("user_add", {
         title: "게시글 작성",
     });
 })
 
 app.post('/save',(req,res)=>{
-    let data = {name : req.body.name, email : req.body.email, phone_no : req.body.phone_no};
-    let sql = "insert into users SET ?";
+    let data = {name : req.body.name, email : req.body.email, title : req.body.title, message : req.body.message};
+    let sql = "insert into testmerge SET ?";
     let query = connection.query(sql, data,(err, results)=>{
         if(err) throw err;
-        res.redirect('/');
+        res.redirect('/review');
     });
 });
 
 app.get('/edit/:userid',(req,res)=>{
     const userId = req.params.userid;
-    let sql = `select *from users where id=${userId}`;
+    let sql = `select *from testmerge where id=${userId}`;
     let query = connection.query(sql, (err,result)=>{
         if(err) throw err;
         res.render('user_edit',{
@@ -66,24 +66,24 @@ app.get('/edit/:userid',(req,res)=>{
 
 app.post('/update', (req, res) => {
     const userId = req.body.id;
-    let sql = "update users SET name='" + req.body.name + "', email='" + req.body.email + "', phone_no='" + req.body.phone_no +"' where id="+userId;
+    let sql = "update testmerge SET name='" + req.body.name + "', email='" + req.body.email + "', title='" + req.body.title +"', message='" + req.body.message +"' where id="+userId;
     let query = connection.query(sql, (err, results) => {
         if (err) throw err;
-        res.redirect('/');
+        res.redirect('/review');
     });
 });
 
 app.get('/delete/:userid', (req, res) => {
     const userId = req.params.userid;
-    let sql = `DELETE from users where id=${userId}`;
+    let sql = `DELETE from testmerge where id=${userId}`;
     let query = connection.query(sql, (err, result) => {
         if (err) throw err;
-        res.redirect('/');
+        res.redirect('/review');
     });
 });
 
 
 //Server Listening
 app.listen(3000,()=>{
-    console.log('Server is running at port http://localhost:3000');
+    console.log('Server is running at port http://localhost:3000/review');
 });
