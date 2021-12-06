@@ -20,21 +20,5 @@ create table users(
     phone_no varchar(1024), PRIMARY KEY(id)
 );
 
-2-1. logreg와 테이블 통합 . 
-테스트를 위해 password를 NULL로 둠. logreg에선 NOT NULL로 해야 함. 
-그리고 name과 email은 회원가입할때 입력한 것을 가져와야 함.
-
-CREATE TABLE testmerge (
-  id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  email varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  password varchar(255) COLLATE utf8mb4_unicode_ci NULL,
-  title varchar(1024) NOT NULL,
-  message varchar(2048) NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY email (email)
- ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
 3. 루트 디렉토리에서 node app.js
 
