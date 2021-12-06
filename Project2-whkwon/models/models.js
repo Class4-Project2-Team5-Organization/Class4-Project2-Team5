@@ -8,9 +8,9 @@
 const mysql = require("mysql");
 const con = require("../databases/db");
 const modelsExports = (module.exports = {});
+const controller = require("../controllers/controllers.js"); // Update 때문에 어쩔 수 없이 controller 빌리긴 했는데, 맞나 싶다
 
 // var sql = "INSERT INTO mypage_test1 (name, email, addr) VALUES ('testName2', 'testEmail2', 'testAddr2');";
-
 // ★Read
 modelsExports.readMypage = () => {
   return new Promise((resolve, reject) => {
@@ -41,30 +41,33 @@ modelsExports.readMypage = () => {
 };
 
 // ★Update
-// modelsExports.updateMypage() = () => {
-//   return new Promise((resolve, reject) => {
-//     let sql = "UPDATE mypage_test1 SET email = 'testEmail' where name = 'testName';"; // where name 성공하면, seq로 변경 후 재시도
-//     con.getConnection((err, connection) => {
-//       try {
-//         console.log("Connection Success");
-//         if(err) throw err;
-
-//         connection.query(sql, (err, result, fields) => {
-//           if(err) {
-//             console.error("UPDATE Error");
-//           } else {
-//             if(result === 0) {
-//               console.error("DB response NOT Found");
-//             } else {
-//               resolve(result);
-//               console.log("Update Data OK");
-//             };
-//           };
-//         });
-//         con.release();
-//       } catch(err) {
-//         console.error("pool UPDATE Error");
-//       };
-//     });
-//   });
-// };
+modelsExports.updateMypage = () => {
+  return new Promise((resolve, reject) => {
+    con.getConnection((err, connection) => {
+      try {
+        console.log("Connection Success");
+        if(err) throw err;
+        
+        let options1 = controller.modifyInfo.name;
+        let options2 = controller.modifyInfo.email;
+        let sql = "UPDATE mypage_test1 SET email = '" + options2 + "' where name = '" + options1 + "';"; // where name 성공하면, seq로 변경 후 재시도
+        // let sql = controller.modifyInfo
+        connection.query(sql, (err, result, fields) => {
+          if(err) {
+            console.error("UPDATE Error");
+          } else {
+            if(result === 0) {
+              console.error("DB response NOT Found");
+            } else {
+              resolve(result);
+              console.log("Update Data OK");
+            };
+          };
+        });
+        con.release();
+      } catch(err) {
+        console.error("pool UPDATE Error");
+      };
+    });
+  });
+};

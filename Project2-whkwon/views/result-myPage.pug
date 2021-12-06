@@ -18,14 +18,14 @@ nav
     
     //- Body(Profile modify)
     #wrapper
-        form(action='/mypage', method='POST')
-            div.row(name='testdiv1')
+        form(action='/modify', method='POST')
+            div.row
                 div.col-md-6    name
-                div.col-md-6    #{userName}
-            div.row(name='testdiv2')
+                div.col-md-6(name='test1')    #{userName}
+            div.row
                 div.col-md-6    email
-                div.col-md-6    #{userEmail}
-            div.row(name='testdiv3')
+                div.col-md-6(name='test2')    #{userEmail}
+            div.row
                 div.col-md-6    address
                 div.col-md-6    #{userAddr}
             input(type='submit' value='수정')

@@ -3,8 +3,8 @@
 // 즉, 단순히 불러온다 라는 개념에서 routes.js를 쓰고 불러서 뭐 할꺼냐? 라는 함수 정의는 controllers.js에서 할 것
 
 const express = require("express");
-var router = express.Router();
-var controller = require("../controllers/controllers.js");
+const router = express.Router();
+const controller = require("../controllers/controllers.js");
 require("../models/models");
 
 
@@ -16,8 +16,8 @@ router.get('/qna', controller.rendermypageQna);
 router.get('/qnalist', controller.rendermypageQnaList);
 
 // POST
-router.post('/mypage', controller.rendermypageButton);
-router.post('/modify', controller.rendermypageModify2);
+router.post('/modify', controller.rendermypageModify); // result-myPage => infoModify
+router.post('/result_modify', controller.rendermypageButton);
 router.post('/qna', controller.rendermypageQnaPost);
 
 module.exports = router;

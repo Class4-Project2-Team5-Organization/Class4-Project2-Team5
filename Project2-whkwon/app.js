@@ -5,6 +5,10 @@ var dataIn = require("./models/models");
 var router = require("./routes/routes");
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("view engine", "pug");
 app.set("views"); // 앞에 views(디렉터리)만 설정하면 해당 폴더 안에 모든 파일 접근 가능한 것 같음
