@@ -18,18 +18,6 @@ CREATE TABLE users (
   UNIQUE KEY email (email)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
- // logreg와 review 테이블 병합
-CREATE TABLE testmerge (
-id int(10) unsigned NOT NULL AUTO_INCREMENT,
-name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-email varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-password varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-title varchar(1024) NULL,
-message varchar(2048) NULL,
-PRIMARY KEY (id),
-UNIQUE KEY email (email)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
-
 
 확인 - show tables;
 내용확인 - select * from 테이블명(users)
