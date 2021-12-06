@@ -11,8 +11,8 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone No.</th>
+                    <th>Title</th>
+                    <th>Message</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -20,8 +20,8 @@
                 <% users.forEach(function(user){ %>
                     <tr>
                         <td><%= user.name%></td>
-                        <td><%= user.email%></td>
-                        <td><%= user.phone_no %></td>
+                        <td><%= user.title%></td>
+                        <td><%= user.message %></td>
                         <td>
                             <a href="/edit/<%= user.id %>" class="btn btn-sm btn-primary">Edit</a>
                             <a href="/delete/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a>

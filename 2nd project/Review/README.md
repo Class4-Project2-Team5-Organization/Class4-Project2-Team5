@@ -16,8 +16,10 @@
 
 create table users(
     id int(100) NOT NULL AUTO_INCREMENT, 
-    name varchar(100), email varchar(100), 
-    phone_no varchar(1024), PRIMARY KEY(id)
+    name varchar(100) NULL, 
+    title varchar(1024) NULL, 
+    message varchar(2048) NULL, 
+    PRIMARY KEY(id)
 );
 
 3. 루트 디렉토리에서 node app.js
