@@ -15,6 +15,11 @@ exports.homePage = async (req, res, next) => {
         user: row[0]
     });
     console.log("로그인 성공, 회원정보 : ", row[0]);
+    console.log("회원 아이디 : ", row[0].name);
+
+    // let sql = `insert into reviewboard (name) select (name) from users where name = ${row[0].name}`;
+    let query = await dbConnection.execute(`insert into reviewboard (name) select (name) from users where name = ${row[0].name}`);
+    console.log("reviewboard 확인")
 }
 
 // Register Page

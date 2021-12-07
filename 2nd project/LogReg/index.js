@@ -38,15 +38,14 @@ const dbConnection = mysql.createPool({
     host: 'localhost', // 사용할 host로 변경
     user: 'root', // 본인이 사용할 user로 변경
     password: 'wlsrud20', // 본인 mysql 접속 비밀번호으로 변경해서 저장할 것.
-    database: 'orthodox_review' 
+    database: 'testmerge' 
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-
 app.get('/review', (req,res)=>{
-    let sql = "select * from users";
+    let sql = "select * from reviewboard";
     let query = dbConnection.query(sql,(err,rows)=>{ 
         if(err) throw err;
         res.render("user_index", {
@@ -57,6 +56,7 @@ app.get('/review', (req,res)=>{
 });
 
 app.get('/review_add',(req,res)=>{
+    // users 테이블의 name을 reviewboard의 name으로 대입
     res.render("user_add", {
         title: "게시글 작성",
     });
@@ -64,7 +64,7 @@ app.get('/review_add',(req,res)=>{
 
 app.post('/save',(req,res)=>{
     let data = {name: req.body.name, title : req.body.title, message : req.body.message};
-    let sql = "insert into users SET ?";
+    let sql = "insert into reviewboard SET ?";
     let query = dbConnection.query(sql, data,(err, results)=>{
         if(err) throw err;
         res.redirect('/review');
@@ -73,7 +73,7 @@ app.post('/save',(req,res)=>{
 
 app.get('/edit/:userid',(req,res)=>{
     const userId = req.params.userid;
-    let sql = `select *from users where id=${userId}`;
+    let sql = `select * from reviewboard where id=${userId}`;
     let query = dbConnection.query(sql, (err,result)=>{
         if(err) throw err;
         res.render('user_edit',{
@@ -85,7 +85,7 @@ app.get('/edit/:userid',(req,res)=>{
 
 app.post('/update', (req, res) => {
     const userId = req.body.id;
-    let sql = "update users SET name='" + req.body.name + "', title='" + req.body.title +"', message='" + req.body.message +"' where id="+userId;
+    let sql = "update reviewboard SET name='" + req.body.name + "', title='" + req.body.title +"', message='" + req.body.message +"' where id="+userId;
     let query = dbConnection.query(sql, (err, results) => {
         if (err) throw err;
         res.redirect('/review');
@@ -94,7 +94,7 @@ app.post('/update', (req, res) => {
 
 app.get('/delete/:userid', (req, res) => {
     const userId = req.params.userid;
-    let sql = `DELETE from users where id=${userId}`;
+    let sql = `DELETE from reviewboard where id=${userId}`;
     let query = dbConnection.query(sql, (err, result) => {
         if (err) throw err;
         res.redirect('/review');

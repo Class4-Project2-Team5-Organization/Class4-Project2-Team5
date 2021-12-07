@@ -8,7 +8,7 @@
 사용 - use databases;
 
 
-// 테이블 생성
+// 계정 테이블 생성
 CREATE TABLE users (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
   name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -17,6 +17,28 @@ CREATE TABLE users (
   PRIMARY KEY (id),
   UNIQUE KEY email (email)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// 게시판 테이블
+create table reviewboard(
+    id int(100) NOT NULL AUTO_INCREMENT, 
+    name varchar(100) NULL, 
+    title varchar(1024) NULL, 
+    message varchar(2048) NULL, 
+    PRIMARY KEY(id)
+);
+
+// 게시판 테이블 (name 제거)
+create table reviewboard(
+    id int(100) NOT NULL AUTO_INCREMENT,
+    title varchar(1024) NULL, 
+    message varchar(2048) NULL, 
+    PRIMARY KEY(id)
+);
+
+// 계정 테이블 + 게시판 테이블 (join)
+select users.id, users.name, reviewboard.title, reviewboard.message from users left join reviewboard on users.id = reviewboard.id order by users.id;
+
+
 
 
 확인 - show tables;
