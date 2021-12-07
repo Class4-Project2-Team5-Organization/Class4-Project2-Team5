@@ -18,7 +18,8 @@ exports.homePage = async (req, res, next) => {
     console.log("회원 아이디 : ", row[0].name);
 
     // let sql = `insert into reviewboard (name) select (name) from users where name = ${row[0].name}`;
-    let query = await dbConnection.execute(`insert into reviewboard (name) select (name) from users where name = '${row[0]}.name'`);
+    // let query = await dbConnection.execute(`insert into reviewboard (name) select (name) from users where name = '${row[0]}.name'`);
+    let query = await dbConnection.execute(`insert into reviewboard (name) select (name) from users`)
     console.log("reviewboard 테이블 확인")
 }
 

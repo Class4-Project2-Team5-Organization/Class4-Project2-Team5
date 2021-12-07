@@ -69,6 +69,11 @@ app.post('/save',(req,res)=>{
         if(err) throw err;
         res.redirect('/review');
     });
+    let namesql = 'insert into reviewboard (name) select (name) from users';
+    let namequery = dbConnection.query(namesql, (err,results)=>{
+        if(err) throw err;
+        console.log("reviewboard 확인");
+    })
 });
 
 app.get('/edit/:userid',(req,res)=>{
