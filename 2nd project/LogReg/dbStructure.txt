@@ -7,6 +7,8 @@
 확인 - show databases;
 사용 - use databases;
 
+// 테스트 디비 작성
+create database testmerge
 
 // 계정 테이블 생성
 CREATE TABLE users (
