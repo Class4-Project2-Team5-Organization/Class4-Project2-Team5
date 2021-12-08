@@ -23,12 +23,35 @@ CREATE TABLE users (
 // mypage 테이블 2 
 이름 mypagesub
 
+create table mypagesub (
+  userid varchar(50) NOT NULL,
+  subsname varchar(50) NOT NULL,
+  subsdetail varchar(50) NULL,
+  subsdate date NULL,
+  subsperiod date NULL
+);
+
 // mypage xpdl
 이름 mypageitem
 
-// 계정 테이블 + 게시판 테이블 (join)
-select users.id, users.name, reviewboard.title, reviewboard.message from users left join reviewboard on users.id = reviewboard.id order by users.id;
+create table mypageitem (
+  userid varchar(50) NOT NULL,
+  prodname varchar(50) NULL,
+  prodcate varchar(50) NULL,
+  prodprice int(11) NULL,
+  proddate date NULL
+);
 
+// join 예제
+
+select zero.id, zero.name, zero.age, one.city, one.gender from zero left join one on zero.id = one.id order by zero.id;
+
+결과
++——+———+———+———+————+
+| id | name | age  | city  | gender |
++——+———+———+———+————+
+|  1 | test |   10 | seoul | male   |
++——+———+———+———+————+
 
 
 
