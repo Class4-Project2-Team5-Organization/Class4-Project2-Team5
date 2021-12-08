@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/result_modify" method="POST">
+        <div class="row">
+            <div class="col-md-6">name:</div>
+            <div class="col-md-6"><input name="modiname" value='<%=username%>' /></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">email:</div>
+            <div class="col-md-6"><input name="modiemail" value='<%=useremail%>' /></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">addr:</div>
+            <div class="col-md-6"><input name="modiaddr" value='<%=useraddr%>' /></div>
+        </div><input type="submit" value="수정" />
+    </form>
+</body>
+
+</html>

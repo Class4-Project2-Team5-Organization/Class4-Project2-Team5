@@ -36,7 +36,8 @@ app.get('/subscribe', (req, res) => {
 });
 
 
-
+const router = require("./routes/routes.js");
+app.use('/', router); // 일단 app.js에서 router를 긁어오긴 했는데, 이거 따로 못빼나?????????
 
 
 app.listen(3000, () => console.log('Server is runngin on port http://localhost:3000'));
