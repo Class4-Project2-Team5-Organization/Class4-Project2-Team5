@@ -3,11 +3,12 @@
 
 1. 계정 정보가 들어갈 데이터베이스를 만들어야 합니다.
 
+// 데이터베이스 생성 : orthodox_logreg
+확인 - show databases;
+사용 - use databases;
 
 // 테스트 디비 작성
 create database testmerge
-사용 use databases testmerge;
-
 
 // 계정 테이블 생성
 CREATE TABLE users (
@@ -19,43 +20,25 @@ CREATE TABLE users (
   UNIQUE KEY email (email)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-// 마이페이지 테이블 2개 생성. 계정 정보는 계정 테이블(users)로 사용.
-1. 마이페이지 계정정보 테이블 - 일단 만들어서 첫 렌더링만 하고, 나중에 교체
-CREATE TABLE mypage_test1 (
-  userid varchar(50) NOT NULL,
-  name varchar(50) NULL,
-  email varchar(50) NULL,
-  addr varchar(50) NULL
+// 게시판 테이블
+create table reviewboard(
+    id int(100) NOT NULL AUTO_INCREMENT, 
+    name varchar(100) NULL, 
+    title varchar(1024) NULL, 
+    message varchar(2048) NULL, 
+    PRIMARY KEY(id)
 );
-더미 데이터 입력
-insert into mypage_test1 (userid, name, email, addr) values ('testid', 'testman', 'testman@test.com', 'vienna');
 
-2. 마이페이지 구독정보 테이블. 첫 구동 후에 테이블 이름 mypagesub으로 고쳐서 다시 테스트
-CREATE TABLE mypage_test2 (
-  userid varchar(50) NOT NULL,
-  subsname varchar(50) NOT NULL,
-  subsdetail varchar(50) NULL,
-  subsdate DATE NULL,
-  subsperiod DATE NULL
+// 게시판 테이블 (name 제거)
+create table reviewboard(
+    id int(100) NOT NULL AUTO_INCREMENT,
+    title varchar(1024) NULL, 
+    message varchar(2048) NULL, 
+    PRIMARY KEY(id)
 );
-더미 데이터 입력 (subsdate, subsperiod는 제외)
-insert into mypage_test2 (userid, subsname, subsdetail) values ('testid2', 'testsubsname', 'testsubsdetail');
 
-3. 마이페이지 상품정보 테이블. 첫 구동 후에 테이블 이름 mypageitem으로 고쳐서 다시 테스트
-CREATE TABLE mypage_test3 (
-  userid varchar(50) NOT NULL,
-  prodname varchar(50) NULL,
-  prodcate varchar(50) NULL,
-  prodprice int(11) NULL,
-  proddate DATE NULL
-);
-더미 데이터 입력 (proddate는 제외)
-insert into mypage_test3 (userid, prodname, prodcate, prodprice) values ('testid3', 'testprodname', 'testprodcate', 10);
-
-** join 예제
-select zero.id, zero.name, zero.age, one.city, one.gender from zero left join one on zero.id = one.id order by zero.id;
-
+// 계정 테이블 + 게시판 테이블 (join)
+select users.id, users.name, reviewboard.title, reviewboard.message from users left join reviewboard on users.id = reviewboard.id order by users.id;
 
 
 
@@ -63,9 +46,9 @@ select zero.id, zero.name, zero.age, one.city, one.gender from zero left join on
 확인 - show tables;
 내용확인 - select * from 테이블명(users)
 
- 1. 데이터베이스 생성후 /utils/dbConnection.js에서 본인 데이터베이스 접근 정보를 입력해줘야 함(기존에 입력되있는 것은 작성자 jhin93의 정보).
+ 2. 데이터베이스 생성후 /utils/dbConnection.js에서 본인 데이터베이스 접근 정보를 입력해줘야 함(기존에 입력되있는 것은 작성자 jhin93의 정보).
 
- 2. 터미널의 루트 디렉토리(/orthodox_LogReg)에서 node index.js 를 입력하여 구동.
+ 3. 터미널의 루트 디렉토리(/orthodox_LogReg)에서 node index.js 를 입력하여 구동.
 
 
 

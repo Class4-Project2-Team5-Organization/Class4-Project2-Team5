@@ -125,7 +125,8 @@ exports.login = async (req, res, next) => {
 
 }
 
-// My page
-exports.myPage = (req, res, next) => {
-    res.render("result-myPage");
+// subscribe
+exports.subscribe = (req, res, next) => {  
+        
+    res.render("subscribe");
 };

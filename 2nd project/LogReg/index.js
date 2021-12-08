@@ -8,7 +8,6 @@ const app = express();
 const mysql = require('mysql');
 
 
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -32,4 +31,12 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(4000, () => console.log('Server is runngin on port http://localhost:4000'));
+app.get('/subscribe', (req, res) => {
+    res.render('./subscribe.ejs');
+});
+
+
+
+
+
+app.listen(3000, () => console.log('Server is runngin on port http://localhost:3000'));

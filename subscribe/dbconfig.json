@@ -1,7 +1,0 @@
-{
-    "host" : "localhost",
-    "user" : "root",
-    "password" : "123",
-    "database": "board",
-    "connectionLimit": 100
-}
