@@ -18,84 +18,24 @@ app.use("/public", express.static('public'));
 app.use('/css',express.static(__dirname+'/assets/css/main.css'));
 app.use('/js',express.static(__dirname+'/views/function.js'));
 
-app.get("/product_list", (req, res) => {
-    const sql = `select * from product`;
-    try {
-        mysql.getConnection((err, connection) => {
-            console.log("connection_pool GET");
-            if(err) throw err;
-            connection.query(sql, (err, result, fields) => {
-                if(err) {
-                    console.error("connection_pool GET Error / " + err);
-                    res.status(500).send("message : Internal Server Error");
-                } else {
-                    if(result.length === 0){
-                        res.status(400).send({
-                            success : false,
-                            message : "DB response Not Found"
-                        })
-                    } else {
-                        res.render('ProductList', {product : result});
-                    };
-                };
-            });
-            connection.release();
-        })
-    } catch (err) {
-        console.error("connection_pool GET Error / " + err);
-        res.status(500).send("message : Internal Server Error");
-        connection.release(); // 에러를 받아서 반납을 해준다
-    }
+
+app.get('/product_list', (req, res) => {
+    const sql = `select * from product`
+    mysql.query(sql, function(err, result, fields) {
+        if(err) throw err;
+        res.render('ProductList',{product : result});
+    });
 });
 
-
-app.post("/cart", (req, res) => {    
-    let sql = `INSERT INTO cart (user_name, product_id, quantity) VALUES ('test3', '2', '2')`;
-    let cartsql = `select * from cart`
-    try {
-        mysql.getConnection((err, connection) => {
-            console.log("connection_pool GET");
-            if(err) throw err;
-            connection.query(sql, (err, result, fields) => {
-                if(err) {
-                    console.error("connection_pool GET Error / " + err);
-                    res.status(500).send("message : Internal Server Error");
-                } else {
-                    if(result.length === 0){
-                        res.status(400).send({
-                            success : false,
-                            message : "DB response Not Found"
-                        })
-                    } else {
-                        connection.query(cartsql, (err, result, fields) => {
-                            if(err) {
-                                console.error("connection_pool GET Error / " + err);
-                                res.status(500).send("message : Internal Server Error");
-                            } else {
-                                if(result.length === 0){
-                                    res.status(400).send({
-                                        success : false,
-                                        message : "DB response Not Found"
-                                    })
-                                } else {
-                                    res.render('Cart', {cart : result});
-                                };
-                            };
-                        });
-                        // res.render('Cart', {cart : result});
-                    };
-                };
-            });
-            connection.release();
-        })
-    } catch (err) {
-        console.error("connection_pool GET Error / " + err);
-        res.status(500).send("message : Internal Server Error");
-        connection.release(); // 에러를 받아서 반납을 해준다
-    }
-});
-  // 장바구니 cart action
-  
+app.post('/detail', (req, res) =>{
+    var productId = req.body.productid
+    console.log(req.body.productid)
+    let sql = `select * from product where id=${productId}` 
+    mysql.query(sql, function(err, result, fields){
+        if(err) throw err;
+        res.render('ProductDetail', {product : result})
+    })
+})
 
 
 app.listen(port, host, () => {

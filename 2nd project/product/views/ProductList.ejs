@@ -29,7 +29,7 @@
     <section class="py-5">    
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx -lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <% product.forEach(function (value){ %> 
+                <% product.forEach(function (value){ %> <!--for(i=0;i<length;i++) product[i].value-->
                 <div class="col mb-5">                   
                     <div class="card h-100">                    
                         <!-- Product image <a href="./product_detail/"> -->
@@ -45,14 +45,14 @@
                             <div class="text-center">
                                 <div class="btn-group" role="group">
                                     <!-- <form action="../router/index.js" method="post"> -->
-                                    <form action="/index/cart" method="post">
-                                    <button class="btn btn-sm btn-outline-secondary" type="button">주문하기</button>
+                                    <form action="/detail" method="post">
+                                        <button class="btn btn-sm btn-outline-secondary" name="productid" value="<%= value.id%>" type="submit">주문하기</button>
                                     </form>
                                     <!-- <button class="btn btn-sm btn-outline-secondary" type="button">구매하기</button>                                     -->
                                 </div>
                             </div>
                         </div>
-                    </div>                
+                    </div>
                 </div>
                 <% }); %>            
             </div>
@@ -70,5 +70,5 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>    
+    </body>
 </html>
