@@ -46,7 +46,7 @@
                                 <div class="btn-group" role="group">
                                     <!-- <form action="../router/index.js" method="post"> -->
                                     <form action="/index/cart" method="post">
-                                    <button class="btn btn-sm btn-outline-secondary" type="button">장바구니</button>
+                                    <button class="btn btn-sm btn-outline-secondary" type="button">주문하기</button>
                                     </form>
                                     <!-- <button class="btn btn-sm btn-outline-secondary" type="button">구매하기</button>                                     -->
                                 </div>
@@ -70,36 +70,5 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
-    <script>        
-    function calculatePrice(cnt){
-        let total = this.total + cnt;
-        if(total < 1) total = 1;
-        this.total = total;
-        this.totalPrice = this.productDetail.product_price * this.total;
-    }
-    function goToDetail(product_id) {
-        this.$router.push({path:'/detail', query:{product_id:product_id}});
-        }
-
-        // export default {
-        //     data() {
-        //         return {
-        //             productList: []
-        //         };
-        //     },
-        //     created() {
-        //         this.getProductList();
-        //     },
-        //     methods: {
-        //         async getProductList() {
-        //             let productList = await this.$api("/api/productList",{});
-        //             console.log(productList);
-        //         },
-        //         goToDetail(product_id) {
-        //             this.$router.push({path:'/detail', query:{product_id:product_id}});
-        //         }
-        //     }
-        // }
-    </script>
+    </body>    
 </html>

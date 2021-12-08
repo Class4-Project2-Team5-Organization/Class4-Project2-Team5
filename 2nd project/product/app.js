@@ -49,6 +49,55 @@ app.get("/product_list", (req, res) => {
 });
 
 
+app.post("/cart", (req, res) => {    
+    let sql = `INSERT INTO cart (user_name, product_id, quantity) VALUES ('test3', '2', '2')`;
+    let cartsql = `select * from cart`
+    try {
+        mysql.getConnection((err, connection) => {
+            console.log("connection_pool GET");
+            if(err) throw err;
+            connection.query(sql, (err, result, fields) => {
+                if(err) {
+                    console.error("connection_pool GET Error / " + err);
+                    res.status(500).send("message : Internal Server Error");
+                } else {
+                    if(result.length === 0){
+                        res.status(400).send({
+                            success : false,
+                            message : "DB response Not Found"
+                        })
+                    } else {
+                        connection.query(cartsql, (err, result, fields) => {
+                            if(err) {
+                                console.error("connection_pool GET Error / " + err);
+                                res.status(500).send("message : Internal Server Error");
+                            } else {
+                                if(result.length === 0){
+                                    res.status(400).send({
+                                        success : false,
+                                        message : "DB response Not Found"
+                                    })
+                                } else {
+                                    res.render('Cart', {cart : result});
+                                };
+                            };
+                        });
+                        // res.render('Cart', {cart : result});
+                    };
+                };
+            });
+            connection.release();
+        })
+    } catch (err) {
+        console.error("connection_pool GET Error / " + err);
+        res.status(500).send("message : Internal Server Error");
+        connection.release(); // 에러를 받아서 반납을 해준다
+    }
+});
+  // 장바구니 cart action
+  
+
+
 app.listen(port, host, () => {
     console.log(`Application server running at http://${host}:${port}/`);
 });

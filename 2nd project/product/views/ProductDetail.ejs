@@ -119,51 +119,5 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
-    
-    <script>
-        function calculatePrice(cnt){
-        let total = this.total + cnt;
-        if(total < 1) total = 1;
-        this.total = total;
-        this.totalPrice = this.productDetail.product_price * this.total;
-    }
-        import calculatePrice from "function.ejs";        
-        export default {
-            data() {
-                return {
-                    productId:0,
-                    productDetail: {},
-                    productImage: [],
-                    total: 1,
-                    totalPrice: 0
-                };
-            },
-            created() {
-                this.productId = this.$route.query.product_id;
-                this.getProductDetail();
-                this.getProductImage();
-            },
-            methods: {
-                calculatePrice(cnt){
-                    let total = this.total + cnt;
-                    if(total < 1) total = 1;
-                    this.total = total;
-                    this.totalPrice = this.productDetail.product_price * this.total;
-                },
-                async getProductDetail() {
-                    let productDetail = await this.$api("/api/productDetail",{param:[this.productId]});
-                    if(productDetail.lenth > 0) {
-                        this.productDetail = productDetail[0];
-                        this.totalPrice = this.totalPrice = this.productDetail.product_price * this.total;
-                    }
-                    console.log(productDetail);
-                },
-                async getProductImage() {
-                    let productImage = await this.$api("/api/productMainImages",{param:[this.productId]});
-                    console.log('this.productImage', this.productImage);
-                }                 
-            }
-        }
-    </script>
+    </body>    
 </html>
