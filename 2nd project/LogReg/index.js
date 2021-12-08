@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 
 
 // ------게시판 로직--------
-
+/*
 const dbConnection = mysql.createPool({
     host: 'localhost', // 사용할 host로 변경
     user: 'root', // 본인이 사용할 user로 변경
@@ -106,6 +106,6 @@ app.get('/delete/:userid', (req, res) => {
         res.redirect('/review');
     });
 });
-
+*/
 
 app.listen(3000, () => console.log('Server is runngin on port http://localhost:3000'));
