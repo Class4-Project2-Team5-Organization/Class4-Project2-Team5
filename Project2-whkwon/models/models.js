@@ -10,15 +10,14 @@ const con = require("../databases/db");
 const modelsExports = (module.exports = {});
 const controller = require("../controllers/controllers.js"); // Update 때문에 어쩔 수 없이 controller 빌리긴 했는데, 맞나 싶다
 
-// var sql = "INSERT INTO mypage_test1 (name, email, addr) VALUES ('testName2', 'testEmail2', 'testAddr2');";
 // ★Read
 modelsExports.readMypage = () => {
   return new Promise((resolve, reject) => {
     let sql = "SELECT * FROM mypage_test1;";
     con.getConnection((err, connection) => {
       try {
-        console.log("Connection Success");
         if(err) throw err;
+        console.log("Connection Success");
 
         connection.query(sql, (err, result, fields) => {
           if(err) {
@@ -45,8 +44,8 @@ modelsExports.updateMypage = () => {
   return new Promise((resolve, reject) => {
     con.getConnection((err, connection) => {
       try {
-        console.log("Connection Success");
         if(err) throw err;
+        console.log("Connection Success");
         
         let options1 = controller.modifyInfo.name;
         let options2 = controller.modifyInfo.email;
@@ -67,6 +66,65 @@ modelsExports.updateMypage = () => {
         con.release();
       } catch(err) {
         console.error("pool UPDATE Error");
+      };
+    });
+  });
+};
+
+// ★Read - Subs List
+modelsExports.renderSubs = () => {
+  return new Promise((resolve, reject) => {
+    con.getConnection((err, connection) => {
+      try {
+        if(err) throw err;
+        console.log("Connection Success");
+        
+        // let sql = "INSERT INTO mypage_test1 (userid, name, email, addr) VALUES ('user4', 'testname', 'testemail', 'testaddr');";
+        
+        let sql = "SELECT * FROM mypage_test2;";
+        connection.query(sql, (err, result, fields) => {
+          if(err) console.error("INSERT Error");
+          else {
+            if(result === 0) console.error("DB response NOT Found");
+            else {
+              resolve(result);
+              console.log("TEST OK");
+            };
+          };
+        });
+        con.release();
+      } catch(err) {
+        console.error("pool Error");
+      };
+    });
+  });
+};
+
+
+// ★Read - Product List
+modelsExports.renderProd = () => {
+  return new Promise((resolve, reject) => {
+    con.getConnection((err, connection) => {
+      try {
+        if(err) throw err;
+        console.log("Connection Success");
+        
+        // let sql = "INSERT INTO mypage_test1 (userid, name, email, addr) VALUES ('user4', 'testname', 'testemail', 'testaddr');";
+        
+        let sql = "SELECT * FROM mypage_test3;";
+        connection.query(sql, (err, result, fields) => {
+          if(err) console.error("INSERT Error");
+          else {
+            if(result === 0) console.error("DB response NOT Found");
+            else {
+              resolve(result);
+              console.log("TEST OK");
+            };
+          };
+        });
+        con.release();
+      } catch(err) {
+        console.error("pool Error");
       };
     });
   });

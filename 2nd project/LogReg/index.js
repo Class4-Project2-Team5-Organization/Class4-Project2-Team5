@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.get('/review', (req,res)=>{
-    let sql = "select title, message from reviewboard";
+    let sql = "select * from reviewboard";
     let query = dbConnection.query(sql, (err,rows)=>{ 
         if(err) throw err;
         res.render("user_index", {
