@@ -70,7 +70,7 @@ window.onload = function () {
     });    
 };
 
-// function logincheck() {
+// function lyu() {
 //     let clicked = document.getElementById("click1");
 //     if
 // }
