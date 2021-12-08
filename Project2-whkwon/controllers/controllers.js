@@ -62,21 +62,20 @@ exports.rendermypageButton = (req, res) => {
 
 // Order Page
 exports.renderOrderpage = (req, res) => {
-  models.renderSubs().then(() => {
+  models.renderSubs().then((result) => {
     res.render("myOrder", {
       subsName: result[0].subsname,
       subsDetail: result[0].subsdetail,
       subsDate: result[0].subsdate,
       subsPeriod: result[0].subsperiod,
     });
-    console.log("success");
-  });
-  models.renderProd().then(() => {
-    res.render("myOrder", {
-      prodName: result[0].prodname,
-      prodCate: result[0].prodcate,
-      prodPrice: result[0].prodprice,
-      prodDate: result[0].proddate,
+    models.renderProd().then((result) => { // 하나의 renderOrderpage에서 subs만 되고 prod는 안됨(일단 나중에 하고 차후 고민해야됨)
+      res.render("myOrder", {
+        prodName: result[0].prodname,
+        prodCate: result[0].prodcate,
+        prodPrice: result[0].prodprice,
+        prodDate: result[0].proddate,
+      });
     });
   });
 };
