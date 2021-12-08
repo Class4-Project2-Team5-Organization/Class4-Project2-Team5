@@ -64,7 +64,7 @@ exports.register = async (req, res, next) => {
                 error: 'Your registration has failed.'
             });
         }
-        
+
         res.render("register", { msg: 'You have successfully registered.' }, () => {
             req.session.destroy((err) => {
                 next(err);
@@ -126,7 +126,26 @@ exports.login = async (req, res, next) => {
 }
 
 // subscribe
-exports.subscribe = (req, res, next) => {  
-        
-    res.render("subscribe");
+exports.subscribe1 = async (req, res, next) => {
+    dbConnection.execute(
+        "INSERT INTO sub (name, email) VALUES ('1111', '1111')"
+    )
+    res.redirect("/subscribe");
+
+};
+
+exports.subscribe2 = async (req, res, next) => {
+    dbConnection.execute(
+        "INSERT INTO sub (name, email) VALUES ('2222', '2222')"
+    )
+    res.redirect("/subscribe");
+
+};
+
+exports.subscribe3 = async (req, res, next) => {
+    dbConnection.execute(
+        "INSERT INTO sub (name, email) VALUES ('3333', '3333')"
+    )
+    res.redirect("/subscribe");
+
 };

@@ -7,7 +7,9 @@ const {
     registerPage,
     login,
     loginPage,
-    subscribe
+    subscribe1,
+    subscribe2,
+    subscribe3
 } = require("./controllers/userController");
 
 const ifNotLoggedin = (req, res, next) => {
@@ -76,44 +78,19 @@ router.get('/logout', (req, res, next) => {
 
 
 
-router.post("/a", subscribe, (req, res) => {
-    const sql = "INSERT INTO sub (name, email) VALUES ('1111', '1111')";
-    mysql.getConnection((err, connection) => {
-        if (err) throw err;
-        connection.query(sql, (err, result, fields) => {
-            if (err) throw err;
-            console.log(result);
-        });
-        connection.release();
-    });
-    res.redirect("/subscribe")
+router.post("/a", subscribe1, (req, res) => {
 
+    res.redirect("/")
 });
 
 
-router.post("/b", subscribe, (req, res) => {
-    const sql = "INSERT INTO sub (name, email) VALUES ('2222', '2222')";
-    mysql.getConnection((err, connection) => {
-        if (err) throw err;
-        connection.query(sql, (err, result, fields) => {
-            if (err) throw err;
-            console.log(result);
-        });
-        connection.release();
-    });
+router.post("/b", subscribe2, (req, res) => {
+
     res.redirect("/subscribe")
 });
 
-router.post("/c", subscribe, (req, res) => {
-    const sql = "INSERT INTO sub (name, email) VALUES ('3333', '3333')";
-    mysql.getConnection((err, connection) => {
-        if (err) throw err;
-        connection.query(sql, (err, result) => {
-            if (err) throw err;
-            console.log(result);
-        });
-        connection.release();
-    });
+router.post("/c", subscribe3, (req, res) => {
+
     res.redirect("/subscribe")
 
 });
