@@ -45,8 +45,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.get('/review', (req,res)=>{
-    let sql = "select * from reviewboard";
-    let query = dbConnection.query(sql,(err,rows)=>{ 
+    let sql = "select title, message from reviewboard";
+    let query = dbConnection.query(sql, (err,rows)=>{ 
         if(err) throw err;
         res.render("user_index", {
             title: "서비스 후기게시판입니다.",
@@ -69,11 +69,12 @@ app.post('/save',(req,res)=>{
         if(err) throw err;
         res.redirect('/review');
     });
-    let namesql = 'insert into reviewboard (name) select (name) from users';
-    let namequery = dbConnection.query(namesql, (err,results)=>{
-        if(err) throw err;
-        console.log("reviewboard 확인");
-    })
+    // join으로 reviewboard 테이블에 user 테이블의 name 넣기
+    // let namesql = 'insert into reviewboard (name) select (name) from users';
+    // let namequery = dbConnection.query(namesql, (err,results)=>{
+    //     if(err) throw err;
+    //     console.log("reviewboard 확인");
+    // })
 });
 
 app.get('/edit/:userid',(req,res)=>{
