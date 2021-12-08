@@ -1,0 +1,28 @@
+//- 1) header/body/footer 고민해서 pug 나눌 것
+//- 2) form action+method도 같이 이 곳에 작성
+//- 3) action="주소"는 app.js와 routes.js에 적힐 url과 일치시켜야 함
+
+include headerMypage
+nav 
+  #wrapper.d-flex
+    //- Sidebar
+    #sidebar-wrapper.border-end.bg-white
+      .sidebar-heading.border-bottom.bg-light My Page
+      .list-group.list-group-flush
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='http://localhost:3000/mypage') Profile
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='http://localhost:3000/qna') Q&A
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Event
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status1
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status2
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status3
+    
+    //- Body(My Q&A Board List)
+    #wrapper
+      form(action='/qnalist', method='GET')
+          div.row
+              div.col-md-6 title
+              div.col-md-6 Where can I find my shopping basket?
+          div.row
+              div.col-md-6 content
+              div.col-md-6 I can't find my shopping basket
+include footerMypage
