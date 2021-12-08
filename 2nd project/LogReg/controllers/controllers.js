@@ -26,9 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 exports.rendermypage = (req, res) => {
   models.readMypage().then((result) => {
     res.render("result-myPage", {
-      userName: result[2].name,
-      userEmail: result[2].email,
-      userAddr: result[2].addr,
+      userName: result[0].name,
+      userEmail: result[0].email,
+      userAddr: result[0].addr,
     });
   });
 };
@@ -38,9 +38,9 @@ exports.rendermypageModify = (req, res) => {
   // input value=변수 => 벡틱+$ => `${변수}`
   models.readMypage().then((result) => {
     res.render("infoModify", {
-      username: result[2].name,
-      useremail: result[2].email,
-      useraddr: result[2].addr,
+      username: result[0].name,
+      useremail: result[0].email,
+      useraddr: result[0].addr,
     });
   });
 };

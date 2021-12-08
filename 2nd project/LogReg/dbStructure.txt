@@ -20,22 +20,11 @@ CREATE TABLE users (
   UNIQUE KEY email (email)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-// 게시판 테이블
-create table reviewboard(
-    id int(100) NOT NULL AUTO_INCREMENT, 
-    name varchar(100) NULL, 
-    title varchar(1024) NULL, 
-    message varchar(2048) NULL, 
-    PRIMARY KEY(id)
-);
+// mypage 테이블 2 
+이름 mypagesub
 
-// 게시판 테이블 (name 제거)
-create table reviewboard(
-    id int(100) NOT NULL AUTO_INCREMENT,
-    title varchar(1024) NULL, 
-    message varchar(2048) NULL, 
-    PRIMARY KEY(id)
-);
+// mypage xpdl
+이름 mypageitem
 
 // 계정 테이블 + 게시판 테이블 (join)
 select users.id, users.name, reviewboard.title, reviewboard.message from users left join reviewboard on users.id = reviewboard.id order by users.id;
