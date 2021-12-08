@@ -1,0 +1,53 @@
+//- 1) header/body/footer 고민해서 pug 나눌 것
+//- 2) form action+method도 같이 이 곳에 작성
+//- 3) action="주소"는 app.js와 routes.js에 적힐 url과 일치시켜야 함
+
+include headerMypage
+nav 
+  #wrapper.d-flex
+    //- Sidebar
+    #sidebar-wrapper.border-end.bg-white
+      .sidebar-heading.border-bottom.bg-light My Page
+      .list-group.list-group-flush
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='http://localhost:3000/mypage') Profile
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='http://localhost:3000/qna') Q&A
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Event
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status1
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status2
+        a.list-group-item.list-group-item-action.list-group-item-light.p-3(href='#!') Status3
+    
+    //- Body(My Order List: 구독 + 상품구매 정보)
+    #wrapper
+        p
+        div.row
+            div.col-md-4    My Subs List
+            div.col-md-4
+            div.col-md-4
+        div.row
+            div.col-md-3    구독상품
+            div.col-md-3    상세 구성품
+            div.col-md-3    시작 날짜
+            div.col-md-3    구독 기간
+        div.row
+            div.col-md-3    #{subsName}
+            div.col-md-3    #{subsDetail}
+            div.col-md-3    #{subsDate}
+            div.col-md-3    #{subsPeriod}
+        p
+        div.row
+            div.col-md-4    My Order List
+            div.col-md-4
+            div.col-md-4
+        div.row
+            div.col-md-3    상품명
+            div.col-md-3    카테고리
+            div.col-md-3    구매가격
+            div.col-md-3    구매날짜
+        div.row
+            div.col-md-3    #{prodName}
+            div.col-md-3    #{prodCate}
+            div.col-md-3    #{prodPrice}
+            div.col-md-3    #{prodDate}
+
+
+include footerMypage
