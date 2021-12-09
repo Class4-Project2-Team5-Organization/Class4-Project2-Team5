@@ -76,11 +76,11 @@ exports.renderOrderpage = (req, res) => {
 // Subs Page
 exports.renderSubspage = (req, res) => {
   models.renderSubs().then((result) => {
-    res.render("myOrder", {
-      itemName: result[0].itemname,
-      itemCate: result[0].itemcate,
-      itemPrice: result[0].itemprice,
-      itemDate: result[0].itemdate,
+    res.render("mySubs", {
+      subsName: result[0].subsname,
+      subsDetail: result[0].subsdetail,
+      subsDate: result[0].subsdate,
+      subsPeriod: result[0].subsperiod,
     });
   });
 };
