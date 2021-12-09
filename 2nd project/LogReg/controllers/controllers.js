@@ -71,10 +71,10 @@ exports.renderOrderpage = (req, res) => {
     });
     models.renderProd().then((result) => { // 하나의 renderOrderpage에서 subs만 되고 prod는 안됨(일단 나중에 하고 차후 고민해야됨)
       res.render("myOrder", {
-        prodName: result[0].prodname,
-        prodCate: result[0].prodcate,
-        prodPrice: result[0].prodprice,
-        prodDate: result[0].proddate,
+        itemName: result[0].itemname,
+        itemCate: result[0].itemcate,
+        itemPrice: result[0].itemprice,
+        itemDate: result[0].itemdate,
       });
     });
   });
