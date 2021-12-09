@@ -11,6 +11,9 @@ const productTable = require("./utils/dbcon");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use('/css',express.static(__dirname+'/assets/css/main.css'));
+app.use('/js',express.static(__dirname+'/views/function.js'));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
     name: 'session',
