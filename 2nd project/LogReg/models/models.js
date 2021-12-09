@@ -6,7 +6,7 @@
 */
 
 const mysql = require("mysql");
-const con = require("../utils/db.js");
+const con = require("../utils/dbConnection.js");
 const modelsExports = (module.exports = {});
 const controller = require("../controllers/controllers.js"); // Update 때문에 어쩔 수 없이 controller 빌리긴 했는데, 맞나 싶다
 
@@ -49,7 +49,8 @@ modelsExports.updateMypage = () => {
         
         let options1 = controller.modifyInfo.name;
         let options2 = controller.modifyInfo.email;
-        let sql = "UPDATE users SET email = '" + options2 + "' where name = '" + options1 + "';"; // where name 성공하면, seq로 변경 후 재시도
+        let options3 = controller.modifyInfo.password;
+        let sql = "UPDATE users SET email = '" + options2 + "', password = '" + options3 + "' where name = '" + options1 + "';"; // where name 성공하면, seq로 변경 후 재시도
         // let sql = controller.modifyInfo
         connection.query(sql, (err, result, fields) => {
           if(err) {
