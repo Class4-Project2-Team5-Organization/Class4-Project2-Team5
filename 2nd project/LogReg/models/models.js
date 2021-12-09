@@ -72,6 +72,35 @@ modelsExports.updateMypage = () => {
   });
 };
 
+// ★Read - Order List
+modelsExports.renderOrder = () => {
+  return new Promise((resolve, reject) => {
+    con.getConnection((err, connection) => {
+      try {
+        if(err) throw err;
+        console.log("Connection Success");
+        
+        // let sql = "INSERT INTO mypage_test1 (userid, name, email, addr) VALUES ('user4', 'testname', 'testemail', 'testaddr');";
+        
+        let sql = "SELECT * FROM mypageitem;";
+        connection.query(sql, (err, result, fields) => {
+          if(err) console.error("INSERT Error");
+          else {
+            if(result === 0) console.error("DB response NOT Found");
+            else {
+              resolve(result);
+              console.log("TEST OK");
+            };
+          };
+        });
+        con.release();
+      } catch(err) {
+        console.error("pool Error");
+      };
+    });
+  });
+};
+
 // ★Read - Subs List
 modelsExports.renderSubs = () => {
   return new Promise((resolve, reject) => {
