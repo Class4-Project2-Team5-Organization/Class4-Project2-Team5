@@ -6,7 +6,7 @@
 */
 
 const mysql = require("mysql");
-const con = require("../utils/dbConnection.js");
+const con = require("../utils/db.js");
 const modelsExports = (module.exports = {});
 const controller = require("../controllers/controllers.js"); // Update 때문에 어쩔 수 없이 controller 빌리긴 했는데, 맞나 싶다
 
