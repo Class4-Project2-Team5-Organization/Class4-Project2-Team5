@@ -11,6 +11,9 @@
 create database testmerge
 
 // 계정 테이블 생성
+
+테이블 정보 확인 : show full columns from 테이블이름
+
 CREATE TABLE users (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
   name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -19,6 +22,7 @@ CREATE TABLE users (
   PRIMARY KEY (id),
   UNIQUE KEY email (email)
  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 // mypage 테이블 2 
 이름 mypagesub
@@ -31,7 +35,11 @@ create table mypagesub (
   subsperiod date NULL
 );
 
-// mypage xpdl
+더미 데이터 입력
+insert into mypagesub (userid, subsname, subsdetail) values ('1', 'test', 'detailedTest'); 
+
+
+// mypage 테이블 3
 이름 mypageitem
 
 create table mypageitem (
@@ -41,6 +49,25 @@ create table mypageitem (
   prodprice int(11) NULL,
   proddate date NULL
 );
+
+더미 데이터 입력
+insert into mypageitem (userid, prodname, prodcate, prodprice) values ('1', 'testname', 'testcate', 1000); 
+
+
+// 구독 테이블
+
+create table sub(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+createTime datetime default NOW(),
+updateTime datetime default NOW()
+);
+
+더미 데이터 입력
+insert into sub (id, name, email) values ('1', 'testnamesub', 'test@hei.com'); 
+
+
 
 // join 예제
 

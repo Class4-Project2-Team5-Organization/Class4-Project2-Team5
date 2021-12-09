@@ -12,10 +12,18 @@ const {
     subscribe3
 } = require("./controllers/userController");
 
-const ifNotLoggedin = (req, res, next) => {
+const notLoginSendHome = (req, res, next) => {
     if (!req.session.userID) {
         return res.render("main") // 로그인이 안되어있을 시 main으로 이동.
         // return res.redirect('/login');
+    }
+    next();
+}
+
+const ifNotLoggedin = (req, res, next) => {
+    if (!req.session.userID) {
+        // return res.render("main") // 로그인이 안되어있을 시 main으로 이동.
+        return res.redirect('/login');
     }
     next();
 }
@@ -27,7 +35,7 @@ const ifLoggedin = (req, res, next) => {
     next();
 }
 
-router.get('/', ifNotLoggedin, homePage);
+router.get('/', notLoginSendHome, homePage);
 
 router.get("/login", ifLoggedin, loginPage);
 router.post("/login",
@@ -77,22 +85,11 @@ router.get('/logout', (req, res, next) => {
 });
 
 
+// 구독 페이지
+router.post("/a", ifNotLoggedin, subscribe1);
 
-router.post("/a", subscribe1, (req, res) => {
+router.post("/b", ifNotLoggedin, subscribe2);
 
-    res.redirect("/")
-});
-
-
-router.post("/b", subscribe2, (req, res) => {
-
-    res.redirect("/subscribe")
-});
-
-router.post("/c", subscribe3, (req, res) => {
-
-    res.redirect("/subscribe")
-
-});
+router.post("/c", ifNotLoggedin, subscribe3);
 
 module.exports = router;
