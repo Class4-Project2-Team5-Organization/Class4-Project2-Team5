@@ -20,21 +20,15 @@ const ifNotLoggedin = (req, res, next) => {
 // GET
 // => Form method에서 'GET으로 호출하지 않음'. 단순 해당 path로 진입 시 page를 띄우기 위해 작성(form 요청이 없어도 default가 get이기에 아래 route 작성만 해도 기능 동작 가능)
 router.get('/mypage', ifNotLoggedin, controller.rendermypage); // ★mypage의 메인이자 시작페이지이므로 최소의 get이 필요해서 작성
-// router.get('/modify', controller.rendermypageModify); // ★밑에 post방식을 타고 들어가지 않는 이상 url에 직접 /modify 입력시 접근 불가
-// myorder 페이지 렌더 test
 router.get('/myorder', controller.renderOrderpage);
-
-// TEST FK
-// router.get('/qna', controller.testFKcont);
-
-// router.get('/qna', controller.rendermypageQna);
-router.get('/qnalist', controller.rendermypageQnaList);
+router.get('/mysubs', controller.renderSubspage);
 
 // POST
 router.post('/modify', controller.rendermypageModify); // 'result-myPage' => 'infoModify'
 router.post('/result_modify', controller.rendermypageButton); // 'infoModify' => 'result-myPage(redirect)' : result-myPage의 data를 이어 받아서 data 수정
 
 
-router.post('/qna', controller.rendermypageQnaPost);
-
 module.exports = router;
+
+// router.get('/qnalist', controller.rendermypageQnaList);
+// router.post('/qna', controller.rendermypageQnaPost);
