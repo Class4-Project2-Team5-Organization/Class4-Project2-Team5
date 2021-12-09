@@ -34,8 +34,17 @@ app.post('/detail', (req, res) =>{
     mysql.query(sql, function(err, result, fields){
         if(err) throw err;
         res.render('ProductDetail', {product : result})
+    });
+});
+
+app.post('/order', (req, res) => {
+    var productId = req.body.productid    
+    let sql = `select * from product where id=${productId}` 
+    mysql.query(sql, function(err, result, fields){
+        if(err) throw err;        
+        res.render('Order', {product : result})        
     })
-})
+});
 
 
 app.listen(port, host, () => {
