@@ -6,7 +6,7 @@
 */
 
 const mysql = require("mysql");
-const con = require("../utils/dbConnection.js");
+const con = require("../utils/db.js");
 const modelsExports = (module.exports = {});
 const controller = require("../controllers/controllers.js"); // Update 때문에 어쩔 수 없이 controller 빌리긴 했는데, 맞나 싶다
 
@@ -67,6 +67,35 @@ modelsExports.updateMypage = () => {
         con.release();
       } catch(err) {
         console.error("pool UPDATE Error");
+      };
+    });
+  });
+};
+
+// ★Read - Order List
+modelsExports.renderOrder = () => {
+  return new Promise((resolve, reject) => {
+    con.getConnection((err, connection) => {
+      try {
+        if(err) throw err;
+        console.log("Connection Success");
+        
+        // let sql = "INSERT INTO mypage_test1 (userid, name, email, addr) VALUES ('user4', 'testname', 'testemail', 'testaddr');";
+        
+        let sql = "SELECT * FROM mypageitem;";
+        connection.query(sql, (err, result, fields) => {
+          if(err) console.error("INSERT Error");
+          else {
+            if(result === 0) console.error("DB response NOT Found");
+            else {
+              resolve(result);
+              console.log("TEST OK");
+            };
+          };
+        });
+        con.release();
+      } catch(err) {
+        console.error("pool Error");
       };
     });
   });
