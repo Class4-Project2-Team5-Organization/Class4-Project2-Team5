@@ -38,6 +38,7 @@ exports.rendermypageModify = (req, res) => {
   // input value=변수 => 벡틱+$ => `${변수}`
   models.readMypage().then((result) => {
     res.render("infoModify", {
+      userid: result[0].id,
       username: result[0].name,
       useremail: result[0].email,
       useraddr: result[0].addr,
@@ -51,7 +52,7 @@ exports.rendermypageButton = (req, res) => {
   exports.modifyInfo = {
     name: req.body.modiname,
     email: req.body.modiemail,
-    addr: req.body.modiaddr,
+    password: req.body.modipwd1,
   };
   // exports.modifyInfo = "UPDATE mypage_test1 SET email = '1234556' where name = 'testName';";
   console.log(req.body);
