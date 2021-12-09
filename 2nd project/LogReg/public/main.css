@@ -11925,3 +11925,7 @@ body {
   }
 }
 
+.renderdiv {
+  width: 100%;
+  margin: 2vw;
+}
