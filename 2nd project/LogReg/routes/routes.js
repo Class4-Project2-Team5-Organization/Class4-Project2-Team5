@@ -7,6 +7,8 @@ const router = express.Router();
 const controller = require("../controllers/controllers.js");
 require("../models/models");
 
+// 마이페이지 로그인체크 복구
+
 // 로그인 체크 추가
 const ifNotLoggedin = (req, res, next) => {
     if (!req.session.userID) {
