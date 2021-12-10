@@ -11934,3 +11934,14 @@ body {
   margin-left: 30vw;
   margin-right: 30vw;
 }
+
+.parent {
+  width: 100%;
+  text-align: center;
+  display: flex;
+}
+
+.first .second .third {
+  flex: 1;
+  
+}

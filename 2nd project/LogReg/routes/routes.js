@@ -8,18 +8,18 @@ const controller = require("../controllers/controllers.js");
 require("../models/models");
 
 // 로그인 체크 추가
-const ifNotLoggedin = (req, res, next) => {
-    if (!req.session.userID) {
-        // return res.render("main") // 로그인이 안되어있을 시 main으로 이동.
-        return res.redirect('/login');
-    }
-    next();
-}
+// const ifNotLoggedin = (req, res, next) => {
+//     if (!req.session.userID) {
+//         // return res.render("main") // 로그인이 안되어있을 시 main으로 이동.
+//         return res.redirect('/login');
+//     }
+//     next();
+// }
 
 // ★핵심: ("경로", "미들웨어 함수") 만 적는다. 미들웨어는 controllers에서 관리
 // GET
 // => Form method에서 'GET으로 호출하지 않음'. 단순 해당 path로 진입 시 page를 띄우기 위해 작성(form 요청이 없어도 default가 get이기에 아래 route 작성만 해도 기능 동작 가능)
-router.get('/mypage', ifNotLoggedin, controller.rendermypage); // ★mypage의 메인이자 시작페이지이므로 최소의 get이 필요해서 작성
+router.get('/mypage', controller.rendermypage); // ★mypage의 메인이자 시작페이지이므로 최소의 get이 필요해서 작성
 router.get('/myorder', controller.renderOrderpage);
 router.get('/mysubs', controller.renderSubspage);
 
