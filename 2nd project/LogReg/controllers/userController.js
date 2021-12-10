@@ -123,15 +123,16 @@ exports.login = async (req, res, next) => {
 // subscribe
 exports.subscribe1 = async (req, res, next) => {
     dbConnection.execute(
-        "INSERT INTO sub (name, email) VALUES ('1111', '1111')"
+        "INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('user1', 'SET1', 'DETAIL1', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));"
     )
+    console.log("Subs Data OK");
     res.redirect("/subscribe");
 
 };
 
 exports.subscribe2 = async (req, res, next) => {
     dbConnection.execute(
-        "INSERT INTO sub (name, email) VALUES ('2222', '2222')"
+        "INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('user2', 'SET2', 'DETAIL2', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));"
     )
     res.redirect("/subscribe");
 
@@ -139,7 +140,7 @@ exports.subscribe2 = async (req, res, next) => {
 
 exports.subscribe3 = async (req, res, next) => {
     dbConnection.execute(
-        "INSERT INTO sub (name, email) VALUES ('3333', '3333')"
+        "INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('user', 'SET3', 'DETAIL3', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));"
     )
     res.redirect("/subscribe");
 
