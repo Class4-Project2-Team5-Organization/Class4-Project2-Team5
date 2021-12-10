@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const app = express();
 const mysql = require('mysql');
-const productTable = require("./utils/dbcon");
+// const productTable = require("./utils/dbcon");
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

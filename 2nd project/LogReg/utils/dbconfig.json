@@ -1,7 +1,7 @@
 {
     "host" : "localhost",
     "user" : "root",
-    "password" : "wlsrud20",
+    "password" : "123",
     "database" : "testmerge",
     "connectionLimit" : 100
 }
