@@ -28,7 +28,7 @@ CREATE TABLE users (
 이름 mypagesub
 
 create table mypagesub (
-  userid varchar(50) NOT NULL,
+  id varchar(50) NOT NULL,
   subsname varchar(50) NOT NULL,
   subsdetail varchar(50) NULL,
   subsdate date NULL,
@@ -43,11 +43,11 @@ insert into mypagesub (userid, subsname, subsdetail) values ('1', 'test', 'detai
 이름 mypageitem
 
 create table mypageitem (
-  userid varchar(50) NOT NULL,
-  prodname varchar(50) NULL,
-  prodcate varchar(50) NULL,
-  prodprice int(11) NULL,
-  proddate date NULL
+  id varchar(50) NOT NULL,
+  itemname varchar(50) NULL,
+  itemcate varchar(50) NULL,
+  itemprice int(11) NULL,
+  itemdate date NULL
 );
 
 더미 데이터 입력
