@@ -48,5 +48,5 @@ app.post('/order', (req, res) => {
 
 
 app.listen(port, host, () => {
-    console.log(`Application server running at http://${host}:${port}/`);
+    console.log(`Application server running at http://${host}:${port}/product_list`);
 });
