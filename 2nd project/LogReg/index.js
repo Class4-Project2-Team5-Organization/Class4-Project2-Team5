@@ -7,6 +7,9 @@ const ejs = require('ejs');
 const app = express();
 const mysql = require('mysql');
 
+// 
+const productMysql = require("./utils/dbConnection")
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

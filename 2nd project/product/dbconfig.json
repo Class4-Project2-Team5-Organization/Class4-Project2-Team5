@@ -1,7 +1,7 @@
 {
     "host" : "localhost",
     "user" : "root",
-    "password" : "wjdwhdcks",
-    "database": "dev",
+    "password" : "wlsrud20",
+    "database": "testmerge",
     "connectionLimit": 100
 }

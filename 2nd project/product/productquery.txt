@@ -10,6 +10,16 @@ create table product(
 select * from product;
 
 
+// 김진경 로컬(로컬중에서도 logreg)에서의 패스(http://127.0.0.1:5500/2nd%20project/Logreg/public)를 데이터로 입력한 데이터.
+insert into product (name, category, price, path1, path2) values ('체험 세트', '세트', '8900', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/trial-set-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/trial-set.png');
+insert into product (name, category, price, path1, path2) values ('면도세트 12개입', '면도기', '39900', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/12-shaving-set-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/12-shaving-set.png');
+insert into product (name, category, price, path1, path2) values ('면도세트 24개입', '면도기', '52430', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/24-shaving-set-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/24-shaving-set.png');
+insert into product (name, category, price, path1, path2) values ('5중날카트리지 4개입', '면도날', '10000', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/cartridge-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/cartridge.png');
+insert into product (name, category, price, path1, path2) values ('시카 쉐이빙젤 2.3', '쉐이빙젤', '9900', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/gel-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/gel.png');
+insert into product (name, category, price, path1, path2) values ('시카 애프터쉐이브 토너 스프레이', '애프터쉐이브', '9900', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/toner-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/toner.png');
+insert into product (name, category, price, path1, path2) values ('시카 애프터쉐이브 로션', '애프터쉐이브', '9900', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/lotion-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/lotion.png');
+insert into product (name, category, price, path1, path2) values ('풀케어 세트', '세트', '59800', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/img/full-care-set-main-0.png', 'http://127.0.0.1:5500/2nd%20project/Logreg/public/assets/detailimg/full-care-set.png');
+
 // 김진경 로컬(로컬중에서도 product)에서의 패스(http://127.0.0.1:5500/2nd%20project/product)를 데이터로 입력한 데이터.
 insert into product (name, category, price, path1, path2) values ('체험 세트', '세트', '8900', 'http://127.0.0.1:5500/2nd%20project/product/assets/img/trial-set-main-0.png', 'http://127.0.0.1:5500/2nd%20project/product/assets/detailimg/trial-set.png');
 insert into product (name, category, price, path1, path2) values ('면도세트 12개입', '면도기', '39900', 'http://127.0.0.1:5500/2nd%20project/product/assets/img/12-shaving-set-main-0.png', 'http://127.0.0.1:5500/2nd%20project/product/assets/detailimg/12-shaving-set.png');
