@@ -42,23 +42,4 @@ app.get('/subscribe', (req, res) => {
 const router = require("./routes/routes.js");
 app.use('/', router); // 일단 app.js에서 router를 긁어오긴 했는데, 이거 따로 못빼나?????????
 
-// product 페이지
-app.get('/product_list', (req, res) => {
-    const sql = `select * from product`
-    productTable.query(sql, function(err, result, fields) {
-        if(err) throw err;
-        res.render('ProductList',{product : result});
-    });
-});
-
-app.post('/detail', (req, res) =>{
-    var productId = req.body.productid
-    console.log(req.body.productid)
-    let sql = `select * from product where id=${productId}` 
-    productTable.query(sql, function(err, result, fields){
-        if(err) throw err;
-        res.render('ProductDetail', {product : result})
-    })
-})
-
 app.listen(3000, () => console.log('Server is runngin on port http://localhost:3000'));
