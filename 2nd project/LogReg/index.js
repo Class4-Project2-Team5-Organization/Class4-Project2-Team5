@@ -43,6 +43,16 @@ app.use('/', router); // 일단 app.js에서 router를 긁어오긴 했는데, �
 
 
 // -------  product  -------
+
+// 로그인체크 추가
+const ifNotLoggedin = (req, res, next) => {
+    if (!req.session.userID) {
+        // return res.render("main") // 로그인이 안되어있을 시 main으로 이동.
+        return res.redirect('/login');
+    }
+    next();
+}
+
 app.get('/product_list', (req, res) => {
     const sql = `select * from product`
     productMysql.query(sql, function(err, result, fields) {
@@ -51,7 +61,7 @@ app.get('/product_list', (req, res) => {
     });
 });
 
-app.post('/detail', (req, res) =>{
+app.post('/detail', ifNotLoggedin, (req, res) =>{
     var productId = req.body.productid
     console.log(req.body.productid)
     let sql = `select * from product where id=${productId}` 
