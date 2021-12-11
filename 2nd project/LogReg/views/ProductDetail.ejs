@@ -87,6 +87,10 @@
                                             <button class="btn btn-lg btn-outline-danger" method="post" name="productid" value="<%= value.id%>">
                                                 주문하기
                                             </button>
+                                            <!-- mypageitem DB INSERT 용 -->
+                                            <input style="display: none;" name="prodname" value="<%=value.name%>">
+                                            <input style="display: none;" name="prodcate" value="<%=value.category%>">
+                                            <input style="display: none;" name="prodprice" value="<%=value.price%>">
                                         </form>
                                     </div>
                                     <!-- <div class="col-6 d-grid p-1">

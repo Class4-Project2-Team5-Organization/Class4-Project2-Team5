@@ -77,7 +77,16 @@ app.post('/order', (req, res) => {
     productMysql.query(sql, function(err, result, fields){
         if(err) throw err;        
         res.render('Order', {product : result})        
-    })
+    });
+
+    // DB table: mypageitem INSERT용도
+    let sql2 =
+    `INSERT INTO mypageitem (id, itemname, itemcate, itemprice, itemdate) VALUES ('user1', '${req.body.prodname}', '${req.body.prodcate}', '${req.body.prodprice}', now());`;
+    productMysql.query(sql2, function(err, result, fields) {
+        if(err) throw err;
+
+        console.log("mypageitem INSERT OK");
+    });
 });
 
 app.listen(3000, () => console.log('Server is runngin on port http://localhost:3000'));
