@@ -11925,15 +11925,6 @@ body {
   }
 }
 
-.renderdiv {
-  width: 100%;
-  margin: 2vw;
-}
-
-.modiv {
-  margin-left: 30vw;
-  margin-right: 30vw;
-}
 
 .parent {
   width: 100%;
@@ -11944,4 +11935,24 @@ body {
 .first .second .third {
   flex: 1;
   
+}
+
+
+/* 권원현 mypage navi */
+
+.renderdiv {
+  width: 100%;
+  margin: 2vw;
+}
+
+.modiv {
+  margin-left: 30vw;
+  margin-right: 30vw;
+}
+
+.backtohead {
+  background-color: #1c1c1c;
+  width: 100%;
+  height: 12vh;
+  /* border: 2px solid red; */
 }

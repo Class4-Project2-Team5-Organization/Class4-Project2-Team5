@@ -63,7 +63,6 @@ app.get('/product_list', (req, res) => {
 
 app.post('/detail', ifNotLoggedin, (req, res) =>{
     var productId = req.body.productid
-    console.log(req.body.productid)
     let sql = `select * from product where id=${productId}` 
     productMysql.query(sql, function(err, result, fields){
         if(err) throw err;
