@@ -68,7 +68,7 @@ exports.renderOrderpage = (req, res) => {
       itemName: result[0].itemname,
       itemCate: result[0].itemcate,
       itemPrice: result[0].itemprice,
-      itemDate: result[0].itemdate,
+      itemDate: result[0].itemdate.toLocaleString(),
     });
   });
 };
@@ -79,8 +79,8 @@ exports.renderSubspage = (req, res) => {
     res.render("mySubs", {
       subsName: result[0].subsname,
       subsDetail: result[0].subsdetail,
-      subsDate: result[0].subsdate,
-      subsPeriod: result[0].subsperiod,
+      subsDate: result[0].subsdate.toLocaleString(),
+      subsPeriod: result[0].subsperiod.toLocaleString(),
     });
   });
 };
