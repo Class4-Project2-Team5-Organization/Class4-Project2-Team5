@@ -97,6 +97,18 @@ insert into product (name, category, price, path1, path2) values ('풀케어 세
 
 
 
+2021-12-11 추가 // 새로 창 띄울 필요없이 바로 이미지 로드 
+
+insert into product (name, category, price, path1, path2) values ('체험 세트', '세트', '8900', './assets/img/trial-set-main-0.png', './assets/detailimg/trial-set.png');
+insert into product (name, category, price, path1, path2) values ('면도세트 12개입', '면도기', '39900', './assets/img/12-shaving-set-main-0.png', './assets/detailimg/12-shaving-set.png');
+insert into product (name, category, price, path1, path2) values ('면도세트 24개입', '면도기', '52430', './assets/img/24-shaving-set-main-0.png', './assets/detailimg/24-shaving-set.png');
+insert into product (name, category, price, path1, path2) values ('5중날카트리지 4개입', '면도날', '10000', './assets/img/cartridge-main-0.png', './assets/detailimg/cartridge.png');
+insert into product (name, category, price, path1, path2) values ('시카 쉐이빙젤 2.3', '쉐이빙젤', '9900', './assets/img/gel-main-0.png', './assets/detailimg/gel.png');
+insert into product (name, category, price, path1, path2) values ('시카 애프터쉐이브 토너 스프레이', '애프터쉐이브', '9900', './assets/img/toner-main-0.png', './assets/detailimg/toner.png');
+insert into product (name, category, price, path1, path2) values ('시카 애프터쉐이브 로션', '애프터쉐이브', '9900', './assets/img/lotion-main-0.png', './assets/detailimg/lotion.png');
+insert into product (name, category, price, path1, path2) values ('풀케어 세트', '세트', '59800', './assets/img/full-care-set-main-0.png', './assets/detailimg/full-care-set.png');
+
+
 
 
 
