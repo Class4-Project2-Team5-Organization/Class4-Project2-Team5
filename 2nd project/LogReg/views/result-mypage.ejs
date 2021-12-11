@@ -27,48 +27,48 @@
 <body>
     <%-include('mypageHeader.ejs')%>
 
-            <!-- (가변) Render Area : My Profile -->
-            <div id="wrapper" class="renderdiv">
-                <div class="d-flex" id="wrapper">
-                    <div id="wrapper">
-                        <form action="/modify" method="POST">
-                            <div class="row">
-                                <div class="col-md-6"> name</div>
-                                <div class="col-md-6">
-                                    <%=userName%>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6"> email</div>
-                                <div class="col-md-6">
-                                    <%=userEmail%>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6"> address</div>
-                                <div class="col-md-6">
-                                    <%=userAddr%>
-                                </div>
-                            </div><input type="submit" value="수정" />
-                        </form>
-                    </div>
-                </div>
+        <!-- (가변) Render Area : My Profile -->
+        <!-- disabled - User ID -->
+        <form action="/modify" method="POST" class="renderdiv listdiv modiv">
+            <div class="listHead">내 정보</div>
+            <div class="form-group">
+                <fieldset disabled="">
+                    <label class="form-label" for="disabledInput">ID</label>
+                    <input class="form-control" name="modiid" id="disabledInput" type="text" placeholder="<%=userID%>"
+                        disabled="">
+                </fieldset>
             </div>
-        </div>
+            <div class="form-group">
+                <fieldset disabled="">
+                    <label class="form-label" for="disabledInput">이름</label>
+                    <input class="form-control" name="modiid" id="disabledInput" type="text" placeholder="<%=userName%>"
+                        disabled="">
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset disabled="">
+                    <label class="form-label" for="disabledInput">E-mail 주소</label>
+                    <input class="form-control" name="modiid" id="disabledInput" type="text"
+                        placeholder="<%=userEmail%>" disabled="">
+                </fieldset>
+            </div>
+            <p></p>
+            <input type="submit" class="btn btn-outline-dark" value="Revise" />
+        </form>
     </nav>
 
     <%-include('mypageFooter.ejs')%>
 
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="./subscribe.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="./subscribe.js"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <!-- * *                               SB Forms JS                               * *-->
+            <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
 </html>

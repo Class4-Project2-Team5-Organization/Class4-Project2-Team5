@@ -27,68 +27,68 @@
 <body>
     <%-include('mypageHeader.ejs')%>
 
-            <!-- (가변) Render Area : My Profile -->
-            
-            <form action="/result_modify" method="POST" class="renderdiv listdiv modiv">
-                <div class="listHead">내 정보 수정</div>
-                <!-- disabled - User ID -->
-                <input name="modiname" value="<%=username%>" style="display: none;"> <!-- name 확인용 -->
-                <div class="form-group">
-                    <fieldset disabled="">
-                        <label class="form-label" for="disabledInput">User ID</label>
-                        <input class="form-control" name="modiid" id="disabledInput" type="text"
-                            placeholder="<%=userid%>" disabled="">
-                    </fieldset>
-                </div>
+        <!-- (가변) Render Area : My Profile -->
 
-                <!-- disabled - Name -->
-                <div class="form-group">
-                    <fieldset disabled="">
-                        <label class="form-label" for="disabledInput">Name</label>
-                        <input class="form-control" name="modiname" id="disabledInput" type="text"
-                            placeholder="<%=username%>" disabled="">
-                    </fieldset>
-                </div>
+        <form action="/result_modify" method="POST" class="renderdiv listdiv modiv">
+            <div class="listHead">내 정보 수정</div>
+            <!-- disabled - User ID -->
+            <input name="modiname" value="<%=username%>" style="display: none;"> <!-- name 확인용 -->
+            <div class="form-group">
+                <fieldset disabled="">
+                    <label class="form-label" for="disabledInput">ID</label>
+                    <input class="form-control" name="modiid" id="disabledInput" type="text" placeholder="<%=userid%>"
+                        disabled="">
+                </fieldset>
+            </div>
 
-                <!-- Abled - E-mail -->
-                <div class="form-group">
-                    <label class="form-label mt-4">E-mail Address</label>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" name="modiemail" id="floatingInput"
-                            placeholder="<%=useremail%>">
-                        <label for="floatingInput">Email address</label>
-                    </div>
-                    <label class="form-label mt-4">Password</label>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" name="modipwd1" id="floatingPassword"
-                            placeholder="Password">
-                        <label for="floatingPassword">Enter the Password</label>
-                    </div>
-                    <p></p>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" name="modipwd2" id="floatingPassword"
-                            placeholder="Password">
-                        <label for="floatingPassword">Re-Enter</label>
-                    </div>
-                    <p></p>
-                    <input type="submit" class="btn btn-outline-dark" value="Submit"></input>
+            <!-- disabled - Name -->
+            <div class="form-group">
+                <fieldset disabled="">
+                    <label class="form-label" for="disabledInput">이름</label>
+                    <input class="form-control" name="modiname" id="disabledInput" type="text"
+                        placeholder="<%=username%>" disabled="">
+                </fieldset>
+            </div>
+
+            <!-- Abled - E-mail -->
+            <div class="form-group">
+                <label class="form-label mt-4">E-mail 주소</label>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="modiemail" id="floatingInput"
+                        placeholder="<%=useremail%>">
+                    <label for="floatingInput">Email address</label>
                 </div>
-            </form>
-        </div>
+                <label class="form-label mt-4">비밀번호</label>
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="modipwd1" id="floatingPassword"
+                        placeholder="Password">
+                    <label for="floatingPassword">Enter the Password</label>
+                </div>
+                <p></p>
+                <label class="form-label mt-4">비밀번호 재확인</label>
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="modipwd2" id="floatingPassword"
+                        placeholder="Password">
+                    <label for="floatingPassword">Re-Enter</label>
+                </div>
+                <p></p>
+                <input type="submit" class="btn btn-outline-dark" value="Submit">
+            </div>
+        </form>
     </nav>
 
-    <%-include('mypageFooter.ejs')%>
+        <%-include('mypageFooter.ejs')%>
 
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="./subscribe.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="./subscribe.js"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <!-- * *                               SB Forms JS                               * *-->
+            <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
 </html>

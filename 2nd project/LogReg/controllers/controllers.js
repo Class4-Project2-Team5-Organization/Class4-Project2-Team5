@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 exports.rendermypage = (req, res) => {
   models.readMypage().then((result) => {
     res.render("result-myPage", {
+      userID: result[0].id,
       userName: result[0].name,
       userEmail: result[0].email,
       userAddr: result[0].addr,
