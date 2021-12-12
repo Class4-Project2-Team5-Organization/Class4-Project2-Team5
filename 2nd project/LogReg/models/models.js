@@ -9,11 +9,13 @@ const mysql = require("mysql");
 const con = require("../utils/db.js");
 const modelsExports = (module.exports = {});
 const controller = require("../controllers/controllers.js"); // Update 때문에 어쩔 수 없이 controller 빌리긴 했는데, 맞나 싶다
+require("express");
 
 // ★Read
 modelsExports.readMypage = () => {
   return new Promise((resolve, reject) => {
-    let sql = "SELECT * FROM users;";
+    let currentUser = controller.currentUser;
+    let sql = "SELECT * FROM users where id='"+ currentUser + "';";
     con.getConnection((err, connection) => {
       try {
         if(err) throw err;
@@ -46,12 +48,12 @@ modelsExports.updateMypage = () => {
       try {
         if(err) throw err;
         console.log("Connection Success");
-        
+
         let options1 = controller.modifyInfo.name;
         let options2 = controller.modifyInfo.email;
         let options3 = controller.modifyInfo.password;
-        let sql = "UPDATE users SET email = '" + options2 + "', password = '" + options3 + "' where name = '" + options1 + "';"; // where name 성공하면, seq로 변경 후 재시도
-        // let sql = controller.modifyInfo
+        let sql = "UPDATE users SET email = '" + options2 + "', password = '" + options3 + "' where name = '" + options1 + "';";
+
         connection.query(sql, (err, result, fields) => {
           if(err) {
             console.error("UPDATE Error");
@@ -80,9 +82,10 @@ modelsExports.renderOrder = () => {
         if(err) throw err;
         console.log("Connection Success");
         
-        // let sql = "INSERT INTO mypage_test1 (userid, name, email, addr) VALUES ('user4', 'testname', 'testemail', 'testaddr');";
-        
-        let sql = "SELECT * FROM mypageitem;";
+        // 일단 주문 1개만 했다고 쳤을 땐 맞음. 여러개 시켰을 땐 for문 써야 되는데 시간 없다 ㅠㅠ
+        let currentUser = controller.currentUser;
+        let sql = "SELECT * FROM mypageitem where id='" + currentUser +"';"; 
+
         connection.query(sql, (err, result, fields) => {
           if(err) console.error("INSERT Error");
           else {
@@ -109,9 +112,9 @@ modelsExports.renderSubs = () => {
         if(err) throw err;
         console.log("Connection Success");
         
-        // let sql = "INSERT INTO mypage_test1 (userid, name, email, addr) VALUES ('user4', 'testname', 'testemail', 'testaddr');";
-        
-        let sql = "SELECT * FROM mypagesub;";
+        let currentUser = controller.currentUser;
+        let sql = "SELECT * FROM mypagesub where id='" + currentUser +"';";
+
         connection.query(sql, (err, result, fields) => {
           if(err) console.error("INSERT Error");
           else {

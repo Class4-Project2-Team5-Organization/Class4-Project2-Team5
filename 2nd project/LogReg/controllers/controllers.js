@@ -24,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ★핵심: 요청을 받았을 때 어떤 "미들웨어" 실행할래? => 해당 미들웨어 함수를 routes.js에서 실행
 // Read - My Page
 exports.rendermypage = (req, res) => {
+  exports.currentUser = req.session.userID;
   if (!req.session.userID) {
-    console.error("Error");
-    console.log("OK??????");
+    console.error("Error at result-mypage");
   } else {
     models.readMypage().then((result) => {
       res.render("result-myPage", {
@@ -41,57 +41,77 @@ exports.rendermypage = (req, res) => {
 
 // Before Update - infoModify
 exports.rendermypageModify = (req, res) => {
-  // input value=변수 => 벡틱+$ => `${변수}`
-  models.readMypage().then((result) => {
-    res.render("infoModify", {
-      userid: result[0].id,
-      username: result[0].name,
-      useremail: result[0].email,
-      useraddr: result[0].addr,
+  exports.currentUser = req.session.userID;
+  if (!req.session.userID) {
+    console.error("Error at infoModify");
+  } else {
+    models.readMypage().then((result) => {
+      res.render("infoModify", {
+        userid: result[0].id,
+        username: result[0].name,
+        useremail: result[0].email,
+        useraddr: result[0].addr,
+      });
     });
-  });
+  };
 };
 
 // After Update - My page(patch)
 exports.rendermypageButton = (req, res) => {
-  exports.modifyInfo = {
-    name: req.body.modiname,
-    email: req.body.modiemail,
-    password: req.body.modipwd1,
-  };
-  if(req.body.modipwd1 !== req.body.modipwd2) {
-    res.send(
-      `<script>alert("비밀번호가 일치하지 않습니다");
-      location.href='${"/modify"}';</script>`);
+  exports.currentUser = req.session.userID;
+  if (!req.session.userID) {
+    console.error("Error after modify UserInfo");
   } else {
-    models.updateMypage().then(() => {
-      res.redirect("/mypage");
-    });
+    exports.modifyInfo = {
+      name: req.body.modiname,
+      email: req.body.modiemail,
+      password: req.body.modipwd1,
+    };
+    if (req.body.modipwd1 !== req.body.modipwd2) {
+      res.send(
+        `<script>alert("비밀번호가 일치하지 않습니다");
+      location.href='${"/modify"}';</script>`
+      );
+    } else {
+      models.updateMypage().then(() => {
+        res.redirect("/mypage");
+      });
+    }
   }
 };
 
 // Order Page
 exports.renderOrderpage = (req, res) => {
-  models.renderOrder().then((result) => {
-    res.render("myOrder", {
-      itemName: result[0].itemname,
-      itemCate: result[0].itemcate,
-      itemPrice: result[0].itemprice,
-      itemDate: result[0].itemdate.toLocaleString(),
+  exports.currentUser = req.session.userID;
+  if (!req.session.userID) {
+    console.error("Error at myOrder");
+  } else {
+    models.renderOrder().then((result) => {
+      res.render("myOrder", {
+        itemName: result[0].itemname,
+        itemCate: result[0].itemcate,
+        itemPrice: result[0].itemprice,
+        itemDate: result[0].itemdate.toLocaleString(),
+      });
     });
-  });
+  }
 };
 
 // Subs Page
 exports.renderSubspage = (req, res) => {
-  models.renderSubs().then((result) => {
-    res.render("mySubs", {
-      subsName: result[0].subsname,
-      subsDetail: result[0].subsdetail,
-      subsDate: result[0].subsdate.toLocaleString(),
-      subsPeriod: result[0].subsperiod.toLocaleString(),
+  exports.currentUser = req.session.userID;
+  if (!req.session.userID) {
+    console.error("Error at mySubs");
+  } else {
+    models.renderSubs().then((result) => {
+      res.render("mySubs", {
+        subsName: result[0].subsname,
+        subsDetail: result[0].subsdetail,
+        subsDate: result[0].subsdate.toLocaleString(),
+        subsPeriod: result[0].subsperiod.toLocaleString(),
+      });
     });
-  });
+  }
 };
 
 
