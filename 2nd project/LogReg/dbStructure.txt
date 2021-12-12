@@ -19,9 +19,8 @@ CREATE TABLE users (
   name varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   email varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   password varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY email (email)
- ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (id)
+ );
 
 
 // mypage 테이블 2 
@@ -35,10 +34,6 @@ create table mypagesub (
   subsperiod date NULL
 );
 
-더미 데이터 입력
-insert into mypagesub (userid, subsname, subsdetail) values ('1', 'test', 'detailedTest'); 
-
-
 // mypage 테이블 3
 이름 mypageitem
 
@@ -50,11 +45,7 @@ create table mypageitem (
   itemdate date NULL
 );
 
-더미 데이터 입력
-insert into mypageitem (userid, prodname, prodcate, prodprice) values ('1', 'testname', 'testcate', 1000); 
-
-
-// 구독 테이블
+// 구독 테이블(★★★★★시은이 개인 DB. 절대 실사용 하지말 것★★★★★)
 
 create table sub(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
