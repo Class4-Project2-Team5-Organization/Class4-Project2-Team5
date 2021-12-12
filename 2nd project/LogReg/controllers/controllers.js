@@ -49,17 +49,20 @@ exports.rendermypageModify = (req, res) => {
 
 // After Update - My page(patch)
 exports.rendermypageButton = (req, res) => {
-  // ★★ PK/FK 구현 후 해당 값으로 바꿔야 함 ★★ or 각자 테이블 쓸꺼면 이대로 가도 될 듯
   exports.modifyInfo = {
     name: req.body.modiname,
     email: req.body.modiemail,
     password: req.body.modipwd1,
   };
-  // exports.modifyInfo = "UPDATE mypage_test1 SET email = '1234556' where name = 'testName';";
-  console.log(req.body);
-  models.updateMypage().then(() => {
-    res.redirect("http://localhost:3000/mypage");
-  });
+  if(req.body.modipwd1 !== req.body.modipwd2) {
+    res.send(
+      `<script>alert("비밀번호가 일치하지 않습니다");
+      location.href='${"/modify"}';</script>`);
+  } else {
+    models.updateMypage().then(() => {
+      res.redirect("/mypage");
+    });
+  }
 };
 
 // Order Page
