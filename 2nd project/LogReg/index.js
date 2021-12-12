@@ -28,10 +28,10 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
-app.use((err, req, res, next) => {
-    // console.log(err);
-    return res.send('Internal Server Error');
-});
+// app.use((err, req, res, next) => {
+//     // console.log(err);
+//     return res.send('Internal Server Error');
+// });
 
 
 app.get('/subscribe', (req, res) => {
@@ -73,6 +73,7 @@ app.post('/detail', (req, res) =>{
 
 app.post('/order', (req, res) => {
     var productId = req.body.productid    
+    let currentUser = req.session.userID;
     let sql = `select * from product where id=${productId}` 
     productMysql.query(sql, function(err, result, fields){
         if(err) throw err;        
@@ -81,7 +82,7 @@ app.post('/order', (req, res) => {
 
     // DB table: mypageitem INSERT용도
     let sql2 =
-    `INSERT INTO mypageitem (id, itemname, itemcate, itemprice, itemdate) VALUES ('${controller.currentUser}', '${req.body.prodname}', '${req.body.prodcate}', '${req.body.prodprice}', now());`;
+    `INSERT INTO mypageitem (id, itemname, itemcate, itemprice, itemdate) VALUES ('${currentUser}', '${req.body.prodname}', '${req.body.prodcate}', '${req.body.prodprice}', now());`;
     productMysql.query(sql2, function(err, result, fields) {
         if(err) throw err;
 

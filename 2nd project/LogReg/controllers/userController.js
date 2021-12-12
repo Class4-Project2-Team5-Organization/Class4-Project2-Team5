@@ -123,8 +123,9 @@ exports.login = async (req, res, next) => {
 
 // subscribe
 exports.subscribe1 = async (req, res, next) => {
+    let currentUser = req.session.userID;
     dbConnection.execute(
-        `INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('${controller.currentUser}', 'SET1', 'SENSITIVE 5중날 면도기(SILVER TYPE) 외 3종', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));`
+        `INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('${currentUser}', 'SET1', 'SENSITIVE 5중날 면도기(SILVER TYPE) 외 3종', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));`
     )
     console.log("Subs Data OK");
     res.redirect("/subscribe");
@@ -132,16 +133,18 @@ exports.subscribe1 = async (req, res, next) => {
 };
 
 exports.subscribe2 = async (req, res, next) => {
+    let currentUser = req.session.userID;
     dbConnection.execute(
-        `INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('${controller.currentUser}', 'SET2', 'SENSITIVE 5중날 면도기(WOOD TYPE) 외 5종', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));`
+        `INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('${currentUser}', 'SET2', 'SENSITIVE 5중날 면도기(WOOD TYPE) 외 5종', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));`
     )
     res.redirect("/subscribe");
 
 };
 
 exports.subscribe3 = async (req, res, next) => {
+    let currentUser = req.session.userID;
     dbConnection.execute(
-        `INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('${controller.currentUser}', 'SET3', 'SENSITIVE 5중날 면도기(GOLD TYPE) 외 7종', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));`
+        `INSERT INTO mypagesub (id, subsname, subsdetail, subsdate, subsperiod) VALUES ('${currentUser}', 'SET3', 'SENSITIVE 5중날 면도기(GOLD TYPE) 외 7종', now(), DATE_ADD(NOW(), INTERVAL 3 MONTH));`
     )
     res.redirect("/subscribe");
 

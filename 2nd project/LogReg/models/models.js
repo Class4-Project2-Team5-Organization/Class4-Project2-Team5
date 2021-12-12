@@ -77,8 +77,8 @@ modelsExports.updateMypage = () => {
 // ★Read - Order List
 modelsExports.renderOrder = () => {
   return new Promise((resolve, reject) => {
-    let currentUser = controller.currentUser;
-    let sql = "SELECT * FROM mypageitem where id='" + currentUser + "';"; 
+    let currentUser2 = controller.currentUser2;
+    let sql = "SELECT * FROM mypageitem where id='" + currentUser2 + "';"; 
     con.getConnection((err, connection) => {
       try {
         if(err) throw err;
@@ -107,8 +107,8 @@ modelsExports.renderOrder = () => {
 // ★Read - Subs List
 modelsExports.renderSubs = () => {
   return new Promise((resolve, reject) => {
-    let currentUser = controller.currentUser;
-    let sql = "SELECT * FROM mypagesub where id='" + currentUser +"';";
+    let currentUser3 = controller.currentUser3;
+    let sql = "SELECT * FROM mypagesub where id='" + currentUser3 +"';";
     con.getConnection((err, connection) => {
       try {
         if(err) throw err;

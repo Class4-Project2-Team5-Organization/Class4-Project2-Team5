@@ -28,6 +28,7 @@ exports.rendermypage = (req, res) => {
   if (!req.session.userID) {
     console.error("Error at result-mypage");
   } else {
+    console.log(req.session.userID);
     models.readMypage().then((result) => {
       res.render("result-myPage", {
         userID: result[0].id,
@@ -41,7 +42,6 @@ exports.rendermypage = (req, res) => {
 
 // Before Update - infoModify
 exports.rendermypageModify = (req, res) => {
-  exports.currentUser = req.session.userID;
   if (!req.session.userID) {
     console.error("Error at infoModify");
   } else {
@@ -58,7 +58,6 @@ exports.rendermypageModify = (req, res) => {
 
 // After Update - My page(patch)
 exports.rendermypageButton = (req, res) => {
-  exports.currentUser = req.session.userID;
   if (!req.session.userID) {
     console.error("Error after modify UserInfo");
   } else {
@@ -82,7 +81,7 @@ exports.rendermypageButton = (req, res) => {
 
 // Order Page
 exports.renderOrderpage = (req, res) => {
-  exports.currentUser = req.session.userID;
+  exports.currentUser2 = req.session.userID;
   if (!req.session.userID) {
     console.error("Error at myOrder");
   } else {
@@ -99,7 +98,7 @@ exports.renderOrderpage = (req, res) => {
 
 // Subs Page
 exports.renderSubspage = (req, res) => {
-  exports.currentUser = req.session.userID;
+  exports.currentUser3 = req.session.userID;
   if (!req.session.userID) {
     console.error("Error at mySubs");
   } else {
