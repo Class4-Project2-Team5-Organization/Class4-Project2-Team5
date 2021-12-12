@@ -24,14 +24,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ★핵심: 요청을 받았을 때 어떤 "미들웨어" 실행할래? => 해당 미들웨어 함수를 routes.js에서 실행
 // Read - My Page
 exports.rendermypage = (req, res) => {
-  models.readMypage().then((result) => {
-    res.render("result-myPage", {
-      userID: result[0].id,
-      userName: result[0].name,
-      userEmail: result[0].email,
-      userAddr: result[0].addr,
+  if (!req.session.userID) {
+    console.error("Error");
+    console.log("OK??????");
+  } else {
+    models.readMypage().then((result) => {
+      res.render("result-myPage", {
+        userID: result[0].id,
+        userName: result[0].name,
+        userEmail: result[0].email,
+        userAddr: result[0].addr,
+      });
     });
-  });
+  };
 };
 
 // Before Update - infoModify

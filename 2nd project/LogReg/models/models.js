@@ -13,7 +13,7 @@ const controller = require("../controllers/controllers.js"); // Update 때문에
 // ★Read
 modelsExports.readMypage = () => {
   return new Promise((resolve, reject) => {
-    let sql = `SELECT * FROM users where id='${req.session.userID}';`;
+    let sql = "SELECT * FROM users;";
     con.getConnection((err, connection) => {
       try {
         if(err) throw err;
