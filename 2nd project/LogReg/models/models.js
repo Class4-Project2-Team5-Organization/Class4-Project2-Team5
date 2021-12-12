@@ -77,14 +77,14 @@ modelsExports.updateMypage = () => {
 // ★Read - Order List
 modelsExports.renderOrder = () => {
   return new Promise((resolve, reject) => {
+    let currentUser = controller.currentUser;
+    let sql = "SELECT * FROM mypageitem where id='" + currentUser + "';"; 
     con.getConnection((err, connection) => {
       try {
         if(err) throw err;
         console.log("Connection Success");
         
         // 일단 주문 1개만 했다고 쳤을 땐 맞음. 여러개 시켰을 땐 for문 써야 되는데 시간 없다 ㅠㅠ
-        let currentUser = controller.currentUser;
-        let sql = "SELECT * FROM mypageitem where id='" + currentUser +"';"; 
 
         connection.query(sql, (err, result, fields) => {
           if(err) console.error("INSERT Error");
@@ -107,13 +107,13 @@ modelsExports.renderOrder = () => {
 // ★Read - Subs List
 modelsExports.renderSubs = () => {
   return new Promise((resolve, reject) => {
+    let currentUser = controller.currentUser;
+    let sql = "SELECT * FROM mypagesub where id='" + currentUser +"';";
     con.getConnection((err, connection) => {
       try {
         if(err) throw err;
         console.log("Connection Success");
         
-        let currentUser = controller.currentUser;
-        let sql = "SELECT * FROM mypagesub where id='" + currentUser +"';";
 
         connection.query(sql, (err, result, fields) => {
           if(err) console.error("INSERT Error");

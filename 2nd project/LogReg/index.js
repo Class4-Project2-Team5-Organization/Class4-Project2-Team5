@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const app = express();
 const mysql = require('mysql');
+const controller = require("./controllers/controllers");
 
 // product db 연결
 const productMysql = require("./utils/productdbcon")
@@ -61,7 +62,7 @@ app.get('/product_list', (req, res) => {
     });
 });
 
-app.post('/detail', ifNotLoggedin, (req, res) =>{
+app.post('/detail', (req, res) =>{
     var productId = req.body.productid
     let sql = `select * from product where id=${productId}` 
     productMysql.query(sql, function(err, result, fields){
@@ -80,7 +81,7 @@ app.post('/order', (req, res) => {
 
     // DB table: mypageitem INSERT용도
     let sql2 =
-    `INSERT INTO mypageitem (id, itemname, itemcate, itemprice, itemdate) VALUES ('user1', '${req.body.prodname}', '${req.body.prodcate}', '${req.body.prodprice}', now());`;
+    `INSERT INTO mypageitem (id, itemname, itemcate, itemprice, itemdate) VALUES ('${controller.currentUser}', '${req.body.prodname}', '${req.body.prodcate}', '${req.body.prodprice}', now());`;
     productMysql.query(sql2, function(err, result, fields) {
         if(err) throw err;
 
