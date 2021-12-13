@@ -56,17 +56,17 @@ window.addEventListener('DOMContentLoaded', event => {
 window.onload = function () {
     let click1 = document.getElementById("click1");
     click1.addEventListener("click", () => {
-        return alert("read1")
+        return alert("Please check the Mypage!")
     });
 
     let click2 = document.getElementById("click2");
     click2.addEventListener("click", () => {
-        return alert("read2")
+        return alert("Please check the Mypage!")
     });
     
     let click3 = document.getElementById("click3");
     click3.addEventListener("click", () => {
-        return alert("read3")
+        return alert("Please check the Mypage!")
     });    
 };
 
